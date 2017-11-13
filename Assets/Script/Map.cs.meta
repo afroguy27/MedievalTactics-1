@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 790b66602a63a8d42b74ce3525ff6b6e
+timeCreated: 1510564089
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - groundPrefab: {fileID: 114011074138607392, guid: 649db99dada2c774b8d17df8a20b2dfe,
+      type: 2}
+  - waterPrefab: {fileID: 114332224497983016, guid: 7954f35ac6d0181499887e690989e345,
+      type: 2}
+  - bridgePrefab: {fileID: 114831688931989428, guid: b133f167c70a96d46a0e7c0bb08b3c52,
+      type: 2}
+  - UnitContainer: {instanceID: 0}
+  - FocusedUnit: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
