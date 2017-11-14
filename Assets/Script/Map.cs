@@ -533,5 +533,9 @@ public class Map : MonoBehaviour {
 			this.value = value;
 		}
 	}
+
+	public Unit getFocused(){
+		return FocusedUnit;
+	}
 		
 }

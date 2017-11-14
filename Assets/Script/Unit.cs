@@ -75,4 +75,7 @@ public class Unit : MonoBehaviour {
 
 	}
 
+	public int getHealth(){
+		return health;
+	}
 }
