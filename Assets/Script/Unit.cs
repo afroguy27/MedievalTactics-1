@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour {
 	public bool isEnemy;
 	public int x;
 	public int y;
-	public bool isFocused;
+	//public bool isFocused;
 	public bool hasBetrayed;
 	public bool isMoved;
 
@@ -39,21 +39,31 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void OnClick(){
-		//if (map.GetTile (x, y).IsAttackable) {
 
-		if (!this.isMoved) {
+		if (!map.unitisAttacking) {
 			map.FocusedUnit = this;
 			this.isMoved = true;
+			map.unitisAttacking = true;
+			print (map.FocusedUnit.gameObject.name);
+			print("x: " + map.FocusedUnit.x + " y: " + map.FocusedUnit.y);
+			print(map.GetTile(map.FocusedUnit.x,  map.FocusedUnit.y).X + " " +map.GetTile(map.FocusedUnit.x,  map.FocusedUnit.y).Y);
+			map.highlightAttackable(map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
 		} else {
-			print (this.health);
-			print (this.gameObject + " attacking to " + this.gameObject);
-			map.AttackTo (map.FocusedUnit, this);
-			//this.loseHealth (this.ATK);
-			print (this.health);
-			this.isDead ();
-			map.FocusedUnit = null;
+			if (map.FocusedUnit == this) {
+				print ("cant attack yourself");
+				return;
+			}else{
+				print (this.health);
+				print (map.FocusedUnit.gameObject.name+ " attacking to " + this.gameObject.name);
+				map.AttackTo (map.FocusedUnit, this);
+				//this.loseHealth (this.ATK);
+				print (this.health);
+				this.isDead ();
+				map.FocusedUnit = null;
+				map.unitisAttacking = false;
+				map.eraseHighlight();
+			}
 		}
-		//}
 	}
 
 

@@ -31,8 +31,13 @@ public class King : Unit {
 	public override void isDead(){
 		if(health <= 0 ){
 			print ("Destroying " + this.gameObject.name);
-			Destroy (this.gameObject);
-			print ("GameOver");
+			if (!this.isEnemy) {
+				Destroy (this.gameObject);
+				print ("GameOver");
+			} else {
+				Destroy (this.gameObject);
+				print ("You won");
+			}
 		}
 	}
 

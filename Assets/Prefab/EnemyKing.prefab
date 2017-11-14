@@ -45,10 +45,9 @@ MonoBehaviour:
   ATK: 2
   range: 1
   move: 2
-  isEnemy: 0
+  isEnemy: 1
   x: 0
   y: 0
-  isFocused: 0
   hasBetrayed: 0
   isMoved: 0
   map: {fileID: 0}

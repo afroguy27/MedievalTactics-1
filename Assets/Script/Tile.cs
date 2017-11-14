@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour {
 	[SerializeField]
 	int cost;
 	[SerializeField]
-	Image highlight;
+	public Image highlight;
 	[SerializeField]
 	Color attackableColor;
 
@@ -26,7 +26,6 @@ public class Tile : MonoBehaviour {
 		get { return y; }
 	}
 	 
-
 	public bool IsAttackable
 	{
 		set

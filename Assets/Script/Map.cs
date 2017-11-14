@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 //using DG.Tweening;
@@ -19,8 +18,10 @@ public class Map : MonoBehaviour {
 	Transform UnitContainer;
 	GameObject touchBlocker;
 	public Unit FocusedUnit;
+	public bool unitisAttacking;
 
 	List<Tile> tiles = new List<Tile>();
+	List<Tile> highlightedTiles = new List<Tile>();
 
 	//public Unit FocusedUnit
 	//{
@@ -456,6 +457,46 @@ public class Map : MonoBehaviour {
 	{
 		toUnit.loseHealth (fromUnit.ATK);
 		FocusedUnit.isMoved = true;
+	}
+
+	public void highlightAttackable(int range, int x, int y){
+		// print ("range is " + range);
+		if (range == 0) {
+			highlight (x, y);
+			highlightedTiles.Add (GetTile(x,y));
+			print (x + ", " + y + " is attackable.");
+		} else {
+			highlight (x, y);
+			highlightedTiles.Add (GetTile(x,y));
+			print (x + ", " + y + " is attackable.");
+			if (x != 0) {
+				highlightAttackable (range - 1, x - 1, y);
+			}
+			if (x != 19) {
+				highlightAttackable (range - 1, x + 1, y);
+			}
+			if (y != 0) {
+				highlightAttackable (range - 1, x, y - 1);
+			}
+			if (y != 9) {
+				highlightAttackable (range - 1, x, y + 1);
+			}
+		}
+	}
+
+	public void highlight(int x, int y){
+		if (GetTile (x, y) == null) {
+			return;
+		} else {
+			GetTile (x, y).highlight.gameObject.SetActive(true);
+		}
+	}
+
+	public void eraseHighlight(){
+		for (int i = 0; i < highlightedTiles.Count; i++) {
+			highlightedTiles [i].highlight.gameObject.SetActive (false);
+		}
+		highlightedTiles.Clear ();
 	}
 
 	// Use this for initialization

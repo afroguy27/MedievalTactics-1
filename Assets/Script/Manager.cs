@@ -10,6 +10,10 @@ public class Manager : MonoBehaviour {
 	Unit KingPrefab;
 	[SerializeField]
 	Unit EnemyKingPrefab;
+	[SerializeField]
+	Unit ArcherPrefab;
+	[SerializeField]
+	Unit EnemyArcherPrefab;
 
 	// Use this for initialization
 	IEnumerator Start () {
@@ -24,7 +28,7 @@ public class Manager : MonoBehaviour {
 		//map.PutUnit ();
 		//map.PutUnit ();
 
-		map.PutUnit (19, 4, EnemyKingPrefab, true);
+		map.PutUnit (1, 4, EnemyKingPrefab, true);
 		//map.PutUnit ();
 		//map.PutUnit ();
 		//map.PutUnit ();
