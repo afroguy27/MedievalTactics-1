@@ -22,6 +22,7 @@ public class Manager : MonoBehaviour {
 
 		KingPrefab.gameObject.SetActive(false);
 		EnemyKingPrefab.gameObject.SetActive(false);
+		ArcherPrefab.gameObject.SetActive (false);
 
 		map.PutUnit (0, 4, KingPrefab, false);
 		//map.PutUnit ();

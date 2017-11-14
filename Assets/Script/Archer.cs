@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Archer : MonoBehaviour {
+public class Archer : Unit {
 
 	// Use this for initialization
 	void Start () {
