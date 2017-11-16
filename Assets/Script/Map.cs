@@ -16,9 +16,12 @@ public class Map : MonoBehaviour {
 	Tile bridgePrefab;
 	[SerializeField]
 	Transform UnitContainer;
+
 	GameObject touchBlocker;
+
 	public Unit FocusedUnit;
 	public bool unitisAttacking;
+	public Tile destinationTile;
 
 	List<Tile> tiles = new List<Tile>();
 	List<Tile> highlightedTiles = new List<Tile>();
@@ -464,11 +467,11 @@ public class Map : MonoBehaviour {
 		if (range == 0) {
 			highlight (x, y);
 			highlightedTiles.Add (GetTile(x,y));
-			print (x + ", " + y + " is attackable.");
+			//print (x + ", " + y + " is attackable.");
 		} else {
 			highlight (x, y);
 			highlightedTiles.Add (GetTile(x,y));
-			print (x + ", " + y + " is attackable.");
+			//print (x + ", " + y + " is attackable.");
 			if (x != 0) {
 				highlightAttackable (range - 1, x - 1, y);
 			}
@@ -498,6 +501,11 @@ public class Map : MonoBehaviour {
 		}
 		highlightedTiles.Clear ();
 	}
+
+	//public void moveUnit(Tile target, Unit FocusedUnit){
+	//	FocusedUnit.x = target.X;
+	//	FocusedUnit.y = target.Y;
+	//}
 
 	// Use this for initialization
 	void Start () {

@@ -46,6 +46,15 @@ public class Tile : MonoBehaviour {
 		this.y = y;
 	}
 
+	public void OnClick(){
+		if (map.FocusedUnit == null) {
+			return;
+		} else {
+			map.destinationTile = this;
+			print ("Destination tile " + map.destinationTile.X + " " + map.destinationTile.Y);
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
 		//GetComponent<Button>().onClick.AddListener(OnClick);
