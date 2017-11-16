@@ -24,7 +24,8 @@ public class Map : MonoBehaviour {
 	public Tile destinationTile;
 
 	List<Tile> tiles = new List<Tile>();
-	List<Tile> highlightedTiles = new List<Tile>();
+	List<Tile> highlightedMoveTiles = new List<Tile>();
+	List<Tile> highlightedAttackTiles = new List<Tile>();
 
 	//public Unit FocusedUnit
 	//{
@@ -466,11 +467,11 @@ public class Map : MonoBehaviour {
 		// print ("range is " + range);
 		if (range == 0) {
 			highlight (x, y);
-			highlightedTiles.Add (GetTile(x,y));
+			highlightedAttackTiles.Add (GetTile(x,y));
 			//print (x + ", " + y + " is attackable.");
 		} else {
 			highlight (x, y);
-			highlightedTiles.Add (GetTile(x,y));
+			highlightedAttackTiles.Add (GetTile(x,y));
 			//print (x + ", " + y + " is attackable.");
 			if (x != 0) {
 				highlightAttackable (range - 1, x - 1, y);
@@ -487,6 +488,33 @@ public class Map : MonoBehaviour {
 		}
 	}
 
+	public void highlightMovable(int movement, int x, int y){
+		int cost = GetTile (x, y).cost;
+
+		// print ("range is " + range);
+		if (movement == 0) {
+			highlight (x, y);
+			highlightedMoveTiles.Add (GetTile(x,y));
+			//print (x + ", " + y + " is attackable.");
+		} else {
+			highlight (x, y);
+			highlightedMoveTiles.Add (GetTile(x,y));
+			//print (x + ", " + y + " is attackable.");
+			if (x != 0) {
+				highlightMovable (movement - cost, x - 1, y);
+			}
+			if (x != 19) {
+				highlightMovable (movement - cost, x + 1, y);
+			}
+			if (y != 0) {
+				highlightMovable (movement - cost, x, y - 1);
+			}
+			if (y != 9) {
+				highlightMovable (movement - cost, x, y + 1);
+			}
+		}
+	}
+
 	public void highlight(int x, int y){
 		if (GetTile (x, y) == null) {
 			return;
@@ -495,17 +523,29 @@ public class Map : MonoBehaviour {
 		}
 	}
 
-	public void eraseHighlight(){
-		for (int i = 0; i < highlightedTiles.Count; i++) {
-			highlightedTiles [i].highlight.gameObject.SetActive (false);
+	public void clearHighlightAttack(){
+		for (int i = 0; i < highlightedAttackTiles.Count; i++) {
+			highlightedAttackTiles [i].highlight.gameObject.SetActive (false);
 		}
-		highlightedTiles.Clear ();
+		highlightedAttackTiles.Clear ();
 	}
 
-	//public void moveUnit(Tile target, Unit FocusedUnit){
-	//	FocusedUnit.x = target.X;
-	//	FocusedUnit.y = target.Y;
-	//}
+	public void clearHighlightMove(){
+		for (int i = 0; i < highlightedMoveTiles.Count; i++) {
+			//print ("debug " + highlightedMoveTiles [i].X);
+			highlightedMoveTiles [i].highlight.gameObject.SetActive (false);
+		}
+		highlightedMoveTiles.Clear ();
+	}
+
+	public void moveUnit(Tile target, Unit Focus){
+		clearHighlightMove();
+		clearHighlightAttack ();
+		print("debug " + Focus.x + " " + Focus.y );
+		print(GetUnit(Focus.x, Focus.y).gameObject.name);
+		GetUnit(Focus.x, Focus.y).transform.position = tiles.First (c => c.X == target.X && c.Y == target.Y).transform.position;
+		print("debug " + Focus.x + " " + Focus.y );
+	}
 
 	// Use this for initialization
 	void Start () {

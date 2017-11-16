@@ -9,7 +9,7 @@ public class Tile : MonoBehaviour {
 	[SerializeField]
 	Map map;
 	[SerializeField]
-	int cost;
+	public int cost;
 	[SerializeField]
 	public Image highlight;
 	[SerializeField]
@@ -52,6 +52,8 @@ public class Tile : MonoBehaviour {
 		} else {
 			map.destinationTile = this;
 			print ("Destination tile " + map.destinationTile.X + " " + map.destinationTile.Y);
+			map.moveUnit (this, map.FocusedUnit);
+			print ("forcused unit " + map.FocusedUnit.x + " " + map.FocusedUnit.y);
 		}
 	}
 

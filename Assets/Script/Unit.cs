@@ -14,20 +14,13 @@ public class Unit : MonoBehaviour {
 	public bool isEnemy;
 	public int x;
 	public int y;
-	//public bool isFocused;
+	public bool isFocused;
 	public bool hasBetrayed;
 	public bool isMoved = false;
 	//public bool tileSelected = false;
 
 	[SerializeField]
 	Map map;
-
-	//public Unit(int hp, int at, int r, int move){
-	//	health = hp;
-	//	ATK = at;
-	//	range = r;
-	//	movement = move;
-	//}
 
 	// Use this for initialization
 	void Start () {
@@ -40,22 +33,49 @@ public class Unit : MonoBehaviour {
 	}
 
 	void OnClick(){
+		/*
+		if (map.GetTile(x, y).IsAttackable)
+		{
+			map.AttackTo(map.FocusedUnit, this);
+			return;
+		}
 
+		if (null != map.FocusedUnit && this != map.FocusedUnit)
+		{
+			map.FocusedUnit.isFocused = false;
+			map.clearHighlightAttack();
+			map.clearHighlightMove ();
+		}
+
+		isFocused = !isFocused;
+		if (isFocused)
+		{
+			map.highlightMovable(move, x, y);
+			map.highlightAttackable(range, x, y);
+		}
+		else
+		{
+			map.clearHighlightAttack();
+			map.clearHighlightMove ();
+
+		}
+		*/
 		if (map.FocusedUnit == null) {
 			print("selecting unit");
 			map.FocusedUnit = this;
 			//highlight moveable tile;
+			map.highlightMovable(this.move, this.x, this.y);
 		} else {
 			if (this == map.FocusedUnit) {
 				print ("Deselecting from here");
+				map.clearHighlightMove ();
 				map.FocusedUnit = null;
-				map.eraseHighlight ();
 			}
 			else if (!map.unitisAttacking) {
 
 				print("not attacking unit");
 				print (this.x + " " + this.y);
-				//moveUnit (map.destinationTile, this);
+				moveUnit (map.destinationTile, this);
 				isMoved = true;
 				map.unitisAttacking = true;
 				map.highlightAttackable (map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
@@ -63,7 +83,7 @@ public class Unit : MonoBehaviour {
 				if (map.FocusedUnit == this) {
 					print("deselect");
 					map.FocusedUnit = null;
-					map.eraseHighlight();
+					map.clearHighlightAttack();
 					map.unitisAttacking = false;
 				} else {
 					print (this.health);
@@ -73,12 +93,12 @@ public class Unit : MonoBehaviour {
 					this.isDead ();
 					map.FocusedUnit = null;
 					map.unitisAttacking = false;
-					map.eraseHighlight();
+					map.clearHighlightAttack();
 				}
 			}
 		}
-
-	/*	if (!map.unitisAttacking) {
+		/*	
+		if (!map.unitisAttacking) {
 			map.FocusedUnit = this;
 			this.isMoved = true;
 			map.unitisAttacking = true;
