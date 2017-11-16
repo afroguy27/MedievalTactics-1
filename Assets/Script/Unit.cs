@@ -33,33 +33,20 @@ public class Unit : MonoBehaviour {
 	}
 
 	void OnClick(){
+
+		if (map.FocusedUnit == null) {
+			print ("selecting unit");
+			map.FocusedUnit = this;
+			//map.highlightMovable (this.move, this.x, this.y);
+			map.highlightAttackable (map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
+		} else if(map.FocusedUnit==this){
+			print("deselecting");
+			map.FocusedUnit = null;
+			//map.clearHighlightMove ();
+			map.clearHighlightAttack ();
+		}
+
 		/*
-		if (map.GetTile(x, y).IsAttackable)
-		{
-			map.AttackTo(map.FocusedUnit, this);
-			return;
-		}
-
-		if (null != map.FocusedUnit && this != map.FocusedUnit)
-		{
-			map.FocusedUnit.isFocused = false;
-			map.clearHighlightAttack();
-			map.clearHighlightMove ();
-		}
-
-		isFocused = !isFocused;
-		if (isFocused)
-		{
-			map.highlightMovable(move, x, y);
-			map.highlightAttackable(range, x, y);
-		}
-		else
-		{
-			map.clearHighlightAttack();
-			map.clearHighlightMove ();
-
-		}
-		*/
 		if (map.FocusedUnit == null) {
 			print("selecting unit");
 			map.FocusedUnit = this;
@@ -97,6 +84,35 @@ public class Unit : MonoBehaviour {
 				}
 			}
 		}
+
+		/*
+		if (map.GetTile(x, y).IsAttackable)
+		{
+			map.AttackTo(map.FocusedUnit, this);
+			return;
+		}
+
+		if (null != map.FocusedUnit && this != map.FocusedUnit)
+		{
+			map.FocusedUnit.isFocused = false;
+			map.clearHighlightAttack();
+			map.clearHighlightMove ();
+		}
+
+		isFocused = !isFocused;
+		if (isFocused)
+		{
+			map.highlightMovable(move, x, y);
+			map.highlightAttackable(range, x, y);
+		}
+		else
+		{
+			map.clearHighlightAttack();
+			map.clearHighlightMove ();
+
+		}
+		*/
+
 		/*	
 		if (!map.unitisAttacking) {
 			map.FocusedUnit = this;

@@ -545,6 +545,9 @@ public class Map : MonoBehaviour {
 		print(GetUnit(Focus.x, Focus.y).gameObject.name);
 		GetUnit(Focus.x, Focus.y).transform.position = tiles.First (c => c.X == target.X && c.Y == target.Y).transform.position;
 		print("debug " + Focus.x + " " + Focus.y );
+		FocusedUnit.x = target.X;
+		FocusedUnit.y = target.Y;
+		highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
 	}
 
 	// Use this for initialization
