@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Swordman : MonoBehaviour {
+public class Swordman : Unit {
 
 	// Use this for initialization
 	void Start () {
