@@ -40,6 +40,10 @@ public class Tile : MonoBehaviour {
 	{
 		get { return map.GetUnit(x, y); }
 	}
+
+	public Obstacles obst{
+		get{ return map.GetObst (x, y);	}
+	}
 		
 	public void SetCoordinate(int x, int y){
 		this.x = x;

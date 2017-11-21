@@ -48,6 +48,7 @@ MonoBehaviour:
   isEnemy: 1
   x: 0
   y: 0
+  isFocused: 0
   hasBetrayed: 0
   isMoved: 0
   map: {fileID: 0}
@@ -152,5 +153,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 278.5, y: 370.93286}
-  m_SizeDelta: {x: 38, y: 38}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}

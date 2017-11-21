@@ -1143,6 +1143,10 @@ MonoBehaviour:
   EnemySwordmanPrefab: {fileID: 88083676}
   ArcherPrefab: {fileID: 561382247}
   EnemyArcherPrefab: {fileID: 1921435179}
+  RockPrefab: {fileID: 114746773732909234, guid: 52221970398473a489970114e16c5cd8,
+    type: 2}
+  TreePrefab: {fileID: 114205288814223594, guid: aaa37d3380ffa9448be19c664a778343,
+    type: 2}
 --- !u!4 &1343498444
 Transform:
   m_ObjectHideFlags: 0

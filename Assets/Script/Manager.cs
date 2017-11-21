@@ -18,6 +18,10 @@ public class Manager : MonoBehaviour {
 	Unit ArcherPrefab;
 	[SerializeField]
 	Unit EnemyArcherPrefab;
+	[SerializeField]
+	Obstacles RockPrefab;
+	[SerializeField]
+	Obstacles TreePrefab;
 
 	// Use this for initialization
 	IEnumerator Start () {
@@ -37,6 +41,16 @@ public class Manager : MonoBehaviour {
 		map.PutUnit (19, 6, EnemyArcherPrefab, true);
 		map.PutUnit (18, 5, EnemySwordmanPrefab, true);
 		map.PutUnit (18, 6, EnemySwordmanPrefab, true);
+
+		map.PutObst (5, 5, TreePrefab);
+		map.PutObst (10, 5, TreePrefab);
+		map.PutObst (9, 8, TreePrefab);
+		map.PutObst (11, 3, TreePrefab);
+
+		map.PutObst (4, 3, RockPrefab);
+		map.PutObst (2, 1, RockPrefab);
+		map.PutObst (1, 9, RockPrefab);
+		map.PutObst (14, 2, RockPrefab);
 
 	}
 	

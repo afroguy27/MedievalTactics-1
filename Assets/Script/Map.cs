@@ -446,6 +446,15 @@ public class Map : MonoBehaviour {
 		unit.y = y;
 
 	}
+	public void PutObst(int x, int y, Obstacles Prefab){
+		var obstacle = Instantiate (Prefab);
+		obstacle.gameObject.SetActive (true);
+		obstacle.transform.SetParent (UnitContainer);
+		obstacle.transform.position = tiles.First (c => c.X == x && c.Y == y).transform.position;
+		obstacle.x = x;
+		obstacle.y = y;
+	}
+
 
 	public Tile GetTile(int x, int y)
 	{
@@ -455,6 +464,10 @@ public class Map : MonoBehaviour {
 	public Unit GetUnit(int x, int y)
 	{
 		return UnitContainer.GetComponentsInChildren<Unit>().FirstOrDefault(u => u.x == x && u.y == y);
+	}
+
+	public Obstacles GetObst(int x, int y){
+		return UnitContainer.GetComponentsInChildren<Obstacles>().FirstOrDefault(u => u.x == x && u.y == y);
 	}
 
 	public void AttackTo(Unit fromUnit, Unit toUnit)
