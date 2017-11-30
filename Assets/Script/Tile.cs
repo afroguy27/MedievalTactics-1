@@ -12,8 +12,11 @@ public class Tile : MonoBehaviour {
 	public int cost;
 	[SerializeField]
 	public Image highlight;
+
 	[SerializeField]
-	Color attackableColor;
+	public Color attackableColor;
+	[SerializeField]
+	public Color movableColor;
 
 	int x;
 	int y;
@@ -24,6 +27,16 @@ public class Tile : MonoBehaviour {
 
 	public int Y {
 		get { return y; }
+	}
+
+	public bool IsMovable
+	{
+		set
+		{
+			highlight.color = movableColor;
+			highlight.gameObject.SetActive(value);
+		}
+		get { return highlight.gameObject.activeSelf && highlight.color == movableColor; }
 	}
 	 
 	public bool IsAttackable
@@ -36,6 +49,7 @@ public class Tile : MonoBehaviour {
 		get { return highlight.gameObject.activeSelf && highlight.color == attackableColor; }
 	}
 
+	
 	public Unit Unit
 	{
 		get { return map.GetUnit(x, y); }
@@ -50,10 +64,12 @@ public class Tile : MonoBehaviour {
 		if (map.FocusedUnit == null) {
 			return;
 		} else {
-			map.destinationTile = this;
-			print ("Destination tile " + map.destinationTile.X + " " + map.destinationTile.Y);
-			map.moveUnit (this, map.FocusedUnit);
-			print ("forcused unit " + map.FocusedUnit.x + " " + map.FocusedUnit.y);
+			if (IsMovable) {
+				map.destinationTile = this;
+				print ("Destination tile " + map.destinationTile.X + " " + map.destinationTile.Y);
+				map.moveUnit (this, map.FocusedUnit);
+				print ("forcused unit " + map.FocusedUnit.x + " " + map.FocusedUnit.y);
+			}
 		}
 	}
 

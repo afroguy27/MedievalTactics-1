@@ -466,13 +466,13 @@ public class Map : MonoBehaviour {
 	public void highlightAttackable(int range, int x, int y){
 		// print ("range is " + range);
 		if (range == 0) {
-			highlight (x, y);
+			highlightAttack(x, y);
 			highlightedAttackTiles.Add (GetTile(x,y));
-			//print (x + ", " + y + " is attackable.");
+			print (x + ", " + y + " is attackable.");
 		} else {
-			highlight (x, y);
+			highlightAttack(x, y);
 			highlightedAttackTiles.Add (GetTile(x,y));
-			//print (x + ", " + y + " is attackable.");
+			print (x + ", " + y + " is attackable.");
 			if (x != 0) {
 				highlightAttackable (range - 1, x - 1, y);
 			}
@@ -493,11 +493,11 @@ public class Map : MonoBehaviour {
 
 		// print ("range is " + range);
 		if (movement == 0) {
-			highlight (x, y);
+			highlightMove(x, y);
 			highlightedMoveTiles.Add (GetTile(x,y));
 			//print (x + ", " + y + " is attackable.");
 		} else {
-			highlight (x, y);
+			highlightMove(x, y);
 			highlightedMoveTiles.Add (GetTile(x,y));
 			//print (x + ", " + y + " is attackable.");
 			if (x != 0) {
@@ -515,13 +515,26 @@ public class Map : MonoBehaviour {
 		}
 	}
 
-	public void highlight(int x, int y){
+	public void highlightAttack(int x, int y){
 		if (GetTile (x, y) == null) {
 			return;
 		} else {
-			GetTile (x, y).highlight.gameObject.SetActive(true);
+			if(GetTile(x, y).Unit != null && GetTile(x, y).Unit.isEnemy != FocusedUnit.isEnemy){
+				GetTile(x, y).IsAttackable = true;
+				//GetTile (x, y).Unit.GetComponent<Button> ().interactable = true;
+			}
 		}
 	}
+
+	public void highlightMove(int x, int y){
+		if (GetTile (x, y) == null) {
+			return;
+		} else {
+			GetTile (x, y).IsMovable = true;
+		}
+	}
+
+
 
 	public void clearHighlightAttack(){
 		for (int i = 0; i < highlightedAttackTiles.Count; i++) {

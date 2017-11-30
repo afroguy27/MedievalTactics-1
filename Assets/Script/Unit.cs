@@ -22,6 +22,7 @@ public class Unit : MonoBehaviour {
 	[SerializeField]
 	Map map;
 
+
 	// Use this for initialization
 	void Start () {
 		
@@ -32,17 +33,17 @@ public class Unit : MonoBehaviour {
 
 	}
 
-	void OnClick(){
+	public void OnClick(){
 
 		if (map.FocusedUnit == null) {
 			print ("selecting unit");
 			map.FocusedUnit = this;
-			//map.highlightMovable (this.move, this.x, this.y);
+			map.highlightMovable(map.FocusedUnit.move, map.FocusedUnit.x, map.FocusedUnit.y);
 			map.highlightAttackable (map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
 		} else if(map.FocusedUnit==this){
 			print("deselecting");
 			map.FocusedUnit = null;
-			//map.clearHighlightMove ();
+			map.clearHighlightMove ();
 			map.clearHighlightAttack ();
 		}
 
