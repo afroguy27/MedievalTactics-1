@@ -10,6 +10,7 @@ public class Unit : MonoBehaviour {
 	public int ATK;
 	public int range;
 	public int move;
+	public int movesCount=0;
 
 	public bool isEnemy;
 	public int x;
@@ -172,5 +173,16 @@ public class Unit : MonoBehaviour {
 			map.setAtkStr (" ");
 			map.setRangeStr (" ");
 		}
+	}
+	public void updateMovesCount(){
+		movesCount++;
+		if (movesCount == move) {
+			isMoved = true;
+			movesCount = 0;
+		}
+	}
+
+	public int getMovesCount(){
+		return movesCount;
 	}
 }
