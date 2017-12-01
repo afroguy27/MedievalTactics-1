@@ -18,6 +18,10 @@ public class Manager : MonoBehaviour {
 	Unit ArcherPrefab;
 	[SerializeField]
 	Unit EnemyArcherPrefab;
+	[SerializeField]
+	Obstacles RockPrefab;
+	[SerializeField]
+	Obstacles TreePrefab;
 
 	// Use this for initialization
 	IEnumerator Start () {
@@ -41,7 +45,6 @@ public class Manager : MonoBehaviour {
 		map.PutUnit (19, 6, EnemyArcherPrefab, true);
 		map.PutUnit (18, 5, EnemySwordmanPrefab, true);
 		map.PutUnit (18, 6, EnemySwordmanPrefab, true);
-
 	}
 	
 	// Update is called once per frame

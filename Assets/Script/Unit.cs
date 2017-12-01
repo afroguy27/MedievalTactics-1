@@ -10,6 +10,7 @@ public class Unit : MonoBehaviour {
 	public int ATK;
 	public int range;
 	public int move;
+	public int movesCount=0;
 
 	public bool isEnemy;
 	public int x;
@@ -19,18 +20,18 @@ public class Unit : MonoBehaviour {
 	public bool isMoved = false;
 	//public bool tileSelected = false;
 
+
 	[SerializeField]
 	Map map;
 
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 
 	// Update is called once per frame
 	void Update () {
-
+		
 	}
 
 	public void OnClick(){
@@ -143,8 +144,11 @@ public class Unit : MonoBehaviour {
 		
 
 	public void moveUnit(Tile destination, Unit focused){
-		focused.x = destination.X;
-		focused.y = destination.Y;
+		print ("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+		if((destination.X==(focused.x+1)||destination.X==(focused.x-1))&&(destination.Y==(focused.y+1)||destination.Y==(focused.y-1))){
+			focused.x = destination.X;
+			focused.y = destination.Y;
+		}
 
 	}
 
@@ -156,7 +160,30 @@ public class Unit : MonoBehaviour {
 
 	}
 
-	public int getHealth(){
-		return health;
+	// Use this for initialization
+	public void hovered(){
+		if (map.FocusedUnit == null) {
+			map.setHealthStr (health.ToString ());
+			map.setAtkStr (ATK.ToString ());
+			map.setRangeStr (range.ToString ());
+		}
+	}
+	public void unhovered(){
+		if (map.FocusedUnit == null) {
+			map.setHealthStr (" ");
+			map.setAtkStr (" ");
+			map.setRangeStr (" ");
+		}
+	}
+	public void updateMovesCount(){
+		movesCount++;
+		if (movesCount == move) {
+			isMoved = true;
+			movesCount = 0;
+		}
+	}
+
+	public int getMovesCount(){
+		return movesCount;
 	}
 }

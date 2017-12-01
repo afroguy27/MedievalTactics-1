@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 //using DG.Tweening;
 
 public class King : Unit {
@@ -33,10 +34,10 @@ public class King : Unit {
 			print ("Destroying " + this.gameObject.name);
 			if (!this.isEnemy) {
 				Destroy (this.gameObject);
-				print ("GameOver");
+				SceneManager.LoadScene (2);
 			} else {
 				Destroy (this.gameObject);
-				print ("You won");
+				SceneManager.LoadScene (3);
 			}
 		}
 	}
@@ -45,11 +46,11 @@ public class King : Unit {
 		health -= ATK;
 	}
 
-	void OnMouseOver(){
-		print (gameObject.name);
-		print("Health: " + health);
-		print ("ATK: " + ATK);
-		print ("Range: " + range);
-	}
+	//void OnMouseOver(){
+	//	print (gameObject.name);
+	//	print("Health: " + health);
+	//	print ("ATK: " + ATK);
+	//	print ("Range: " + range);
+	//}
 
 }

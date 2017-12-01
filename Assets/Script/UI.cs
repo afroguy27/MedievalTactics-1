@@ -17,7 +17,8 @@ public class UI : MonoBehaviour {
 	void Update () {
 		if (map.getFocused () != null) {
 			selected = map.getFocused ();
-			healthToDisplay = selected.getHealth ();
+			// TODO: Broke Unity Please Fix
+			//healthToDisplay = selected.getHealth ();
 		} else {
 			healthToDisplay = 0;
 		}
