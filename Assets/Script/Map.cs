@@ -19,6 +19,16 @@ public class Map : MonoBehaviour {
 
 	GameObject touchBlocker;
 
+
+	string atkStr=" ";
+	string healthStr=" ";
+	string rangeStr=" ";
+	public Text healthtxt;
+	public Text atktxt;
+	public Text rangetxt;
+
+
+
 	public Unit FocusedUnit;
 	public bool unitisAttacking;
 	public Tile destinationTile;
@@ -552,15 +562,17 @@ public class Map : MonoBehaviour {
 	}
 
 	public void moveUnit(Tile target, Unit Focus){
-		clearHighlightMove();
-		clearHighlightAttack ();
-		print("debug " + Focus.x + " " + Focus.y );
-		print(GetUnit(Focus.x, Focus.y).gameObject.name);
-		GetUnit(Focus.x, Focus.y).transform.position = tiles.First (c => c.X == target.X && c.Y == target.Y).transform.position;
-		print("debug " + Focus.x + " " + Focus.y );
-		FocusedUnit.x = target.X;
-		FocusedUnit.y = target.Y;
-		highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
+		if ((((target.X+1) == (Focus.x) || (target.X-1) == (Focus.x)))&&target.Y==Focus.y||(((target.Y+1) == (Focus.y) || (target.Y-1) == (Focus.y))&&target.X==Focus.x)) {
+			clearHighlightMove ();
+			clearHighlightAttack ();
+			print ("debug " + Focus.x + " " + Focus.y);
+			print (GetUnit (Focus.x, Focus.y).gameObject.name);
+			GetUnit (Focus.x, Focus.y).transform.position = tiles.First (c => c.X == target.X && c.Y == target.Y).transform.position;
+			print ("debug " + Focus.x + " " + Focus.y);
+			FocusedUnit.x = target.X;
+			FocusedUnit.y = target.Y;
+			highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
+		}
 	}
 
 	// Use this for initialization
@@ -573,7 +585,9 @@ public class Map : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		healthtxt.text = "Health: " + healthStr;
+		atktxt.text = "Attack: " + atkStr;
+		rangetxt.text = "Range: " + rangeStr;
 	}
 
 	public class Coordinate{
@@ -601,5 +615,19 @@ public class Map : MonoBehaviour {
 	public Unit getFocused(){
 		return FocusedUnit;
 	}
-		
+
+	public void setHealthStr(string a){
+		healthStr = a;
+	}
+
+	public void setAtkStr(string a){
+		atkStr = a;
+	}
+
+	public void setRangeStr(string a){
+		rangeStr = a;
+	}
+
+
+
 }

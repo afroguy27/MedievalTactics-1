@@ -46,11 +46,11 @@ public class King : Unit {
 		health -= ATK;
 	}
 
-	void OnMouseOver(){
-		print (gameObject.name);
-		print("Health: " + health);
-		print ("ATK: " + ATK);
-		print ("Range: " + range);
-	}
+	//void OnMouseOver(){
+	//	print (gameObject.name);
+	//	print("Health: " + health);
+	//	print ("ATK: " + ATK);
+	//	print ("Range: " + range);
+	//}
 
 }
