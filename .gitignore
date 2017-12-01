@@ -33,3 +33,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.exe
+
+# Disabling Plugins for now...
+/[Aa]ssets/[Pp]lugins.meta
+/[Aa]ssets/[Pp]lugins
