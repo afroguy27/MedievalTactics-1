@@ -673,6 +673,7 @@ public class Map : MonoBehaviour {
 
 	public Tile GetTile(int x, int y)
 	{
+		//print ("searching for tile (" + x +", " + y + ")");
 		return tiles.First(c => c.X == x && c.Y == y);
 	}
 
@@ -693,6 +694,7 @@ public class Map : MonoBehaviour {
 			highlightAttack(x, y);
 			highlightedAttackTiles.Add (GetTile(x,y));
 			print (x + ", " + y + " is attackable.");
+
 		} else {
 			highlightAttack(x, y);
 			highlightedAttackTiles.Add (GetTile(x,y));
@@ -714,18 +716,18 @@ public class Map : MonoBehaviour {
 
 	public void highlightMovable(int movement, int x, int y){
 		int cost = GetTile (x, y).cost;
-
-		// print ("range is " + range);
-		if (movement == 0) {
+		print ("(" +x + ", " + y+ ")\t" + "movement: "+ movement + "\tcost:" + cost);
+		//print ("range is " + range);
+		if (movement - cost == 0) {
 			highlightMove(x, y);
 			highlightedMoveTiles.Add (GetTile(x,y));
-			//print (x + ", " + y + " is attackable.");
-		}else if(movement < 0){
-			;
+			print (x + ", " + y + " is movable.");
+		}else if(movement - cost < 0){
+			return;
 		} else {
 			highlightMove(x, y);
 			highlightedMoveTiles.Add (GetTile(x,y));
-			//print (x + ", " + y + " is attackable.");
+			print (x + ", " + y + " is movable.");
 			if (x != 0) {
 				highlightMovable (movement - cost, x - 1, y);
 			}
@@ -764,7 +766,7 @@ public class Map : MonoBehaviour {
 
 	public void clearHighlightAttack(){
 		for (int i = 0; i < highlightedAttackTiles.Count; i++) {
-			highlightedAttackTiles [i].highlight.gameObject.SetActive (false);
+			highlightedAttackTiles [i].IsAttackable = false;
 		}
 		highlightedAttackTiles.Clear ();
 	}
@@ -772,7 +774,7 @@ public class Map : MonoBehaviour {
 	public void clearHighlightMove(){
 		for (int i = 0; i < highlightedMoveTiles.Count; i++) {
 			//print ("debug " + highlightedMoveTiles [i].X);
-			highlightedMoveTiles [i].highlight.gameObject.SetActive (false);
+			highlightedMoveTiles [i].IsMovable =false;
 		}
 		highlightedMoveTiles.Clear ();
 	}
@@ -787,6 +789,7 @@ public class Map : MonoBehaviour {
 		FocusedUnit.x = target.X;
 		FocusedUnit.y = target.Y;
 		highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
+		
 	}
 
 	// Use this for initialization

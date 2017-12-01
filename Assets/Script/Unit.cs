@@ -38,7 +38,7 @@ public class Unit : MonoBehaviour {
 		if (map.FocusedUnit == null) {
 			print ("selecting unit");
 			map.FocusedUnit = this;
-			map.highlightMovable(map.FocusedUnit.move, map.FocusedUnit.x, map.FocusedUnit.y);
+			map.highlightMovable(map.FocusedUnit.move + map.GetTile (x, y).cost, map.FocusedUnit.x, map.FocusedUnit.y);
 			map.highlightAttackable (map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
 		} else if(map.FocusedUnit==this){
 			print("deselecting");
