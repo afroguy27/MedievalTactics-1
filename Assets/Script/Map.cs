@@ -52,7 +52,10 @@ public class Map : MonoBehaviour {
 	public Tile GetTile(int x, int y)
 	{
 		//print ("searching for tile (" + x +", " + y + ")");
-		return tiles.First(c => c.X == x && c.Y == y);
+		Tile myTile;
+		myTile = tiles.FirstOrDefault(c => c.X == x && c.Y == y);
+		//print ("myTile: (" + myTile.X + ", " + myTile.Y + ")");
+		return myTile;
 	}
 
 	public Unit GetUnit(int x, int y)
@@ -72,12 +75,12 @@ public class Map : MonoBehaviour {
 		if (range == 0) {
 			highlightAttack(x, y);
 			highlightedAttackTiles.Add (GetTile(x,y));
-			print (x + ", " + y + " is attackable.");
+			//print (x + ", " + y + " is attackable.");
 
 		} else {
 			highlightAttack(x, y);
 			highlightedAttackTiles.Add (GetTile(x,y));
-			print (x + ", " + y + " is attackable.");
+			//print (x + ", " + y + " is attackable.");
 			if (x != 0) {
 				highlightAttackable (range - 1, x - 1, y);
 			}
@@ -95,18 +98,18 @@ public class Map : MonoBehaviour {
 
 	public void highlightMovable(int movement, int x, int y){
 		int cost = GetTile (x, y).cost;
-		print ("(" +x + ", " + y+ ")\t" + "movement: "+ movement + "\tcost:" + cost);
+		//print ("(" +x + ", " + y+ ")\t" + "movement: "+ movement + "\tcost:" + cost);
 		//print ("range is " + range);
 		if (movement - cost == 0) {
 			highlightMove(x, y);
 			highlightedMoveTiles.Add (GetTile(x,y));
-			print (x + ", " + y + " is movable.");
+			//print (x + ", " + y + " is movable.");
 		}else if(movement - cost < 0){
 			return;
 		} else {
 			highlightMove(x, y);
 			highlightedMoveTiles.Add (GetTile(x,y));
-			print (x + ", " + y + " is movable.");
+			//print (x + ", " + y + " is movable.");
 			if (x != 0) {
 				highlightMovable (movement - cost, x - 1, y);
 			}
@@ -443,7 +446,7 @@ public class Map : MonoBehaviour {
 			tiles.Add(tile);
 		}
 
-		//seventh column
+		//7th column
 		for (var i = 0; i < 4; i++) {
 			//print ("Setting Coordinate : " + i + 7);
 			Tile tile;
@@ -657,7 +660,7 @@ public class Map : MonoBehaviour {
 			tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
-			tile.SetCoordinate (10, i);
+			tile.SetCoordinate (11, i);
 			tiles.Add(tile);
 		}
 
@@ -667,7 +670,7 @@ public class Map : MonoBehaviour {
 			tile = Instantiate(treePrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
-			tile.SetCoordinate (10, i);
+			tile.SetCoordinate (11, i);
 			tiles.Add(tile);
 		}
 
@@ -677,7 +680,7 @@ public class Map : MonoBehaviour {
 			tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
-			tile.SetCoordinate (10, i);
+			tile.SetCoordinate (11, i);
 			tiles.Add(tile);
 		}
 
@@ -688,7 +691,7 @@ public class Map : MonoBehaviour {
 			tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
-			tile.SetCoordinate (10, i);
+			tile.SetCoordinate (12, i);
 			tiles.Add(tile);
 		}
 
