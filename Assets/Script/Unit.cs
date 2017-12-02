@@ -47,13 +47,18 @@ public class Unit : MonoBehaviour {
 			map.clearHighlightMove ();
 			map.clearHighlightAttack ();
 		} else {
-			print (map.FocusedUnit.name + " attacking to " + this.name);
-			print (this.health + "current");
-			map.AttackTo (map.GetUnit(map.FocusedUnit.x, map.FocusedUnit.y), this);
-			print (this.health);
-			map.clearHighlightAttack();
-			map.clearHighlightMove ();
-			map.FocusedUnit = null;
+
+			if (map.GetUnit (map.FocusedUnit.x, map.FocusedUnit.y).isEnemy != this.isEnemy) {
+				print (map.FocusedUnit.name + " attacking to " + this.name);
+				print (this.health + "current");
+				map.AttackTo (map.GetUnit (map.FocusedUnit.x, map.FocusedUnit.y), this);
+				print (this.health);
+				map.clearHighlightAttack ();
+				map.clearHighlightMove ();
+				map.FocusedUnit = null;
+			} else {
+				print ("cant attack your team");
+			}
 		}
 
 		/*
