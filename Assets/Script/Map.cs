@@ -32,6 +32,13 @@ public class Map : MonoBehaviour {
 	List<Tile> highlightedMoveTiles = new List<Tile>();
 	List<Tile> highlightedAttackTiles = new List<Tile>();
 
+	public Button button; //button instance
+	public bool playerTurn = true; //boolean value used for determining player turn
+
+	//lists of ally and enemy units
+	public List<Unit> unitsAlly = new List<Unit> (10);
+	public List<Unit> unitsEnemy = new List<Unit> (10);
+
 	//public Unit FocusedUnit
 	//{
 	//	get { return UnitContainer.GetComponentsInChildren<Unit>().FirstOrDefault(x => x.isFocused);}
@@ -46,6 +53,14 @@ public class Map : MonoBehaviour {
 		unit.transform.position = tiles.First (c => c.X == x && c.Y == y).transform.position;
 		unit.x = x;
 		unit.y = y;
+
+		//if the current unit being placed is an enemy adds it to the enemy list
+		if (isEnemy) {
+			unitsEnemy.Add (unit);
+		} else {
+			//adds to the ally list
+			unitsAlly.Add (unit);
+		}
 
 	}
 
@@ -157,15 +172,17 @@ public class Map : MonoBehaviour {
 	}
 
 	public void moveUnit(Tile target, Unit Focus){
-		clearHighlightMove();
-		clearHighlightAttack ();
-		print("debug " + Focus.x + " " + Focus.y );
-		print(GetUnit(Focus.x, Focus.y).gameObject.name);
-		GetUnit(Focus.x, Focus.y).transform.position = tiles.First (c => c.X == target.X && c.Y == target.Y).transform.position;
-		print("debug " + Focus.x + " " + Focus.y );
-		FocusedUnit.x = target.X;
-		FocusedUnit.y = target.Y;
-		highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
+		if (!Focus.isMoved) {
+			clearHighlightMove ();
+			clearHighlightAttack ();
+			print ("debug " + Focus.x + " " + Focus.y);
+			print (GetUnit (Focus.x, Focus.y).gameObject.name);
+			GetUnit (Focus.x, Focus.y).transform.position = tiles.First (c => c.X == target.X && c.Y == target.Y).transform.position;
+			print ("debug " + Focus.x + " " + Focus.y);
+			FocusedUnit.x = target.X;
+			FocusedUnit.y = target.Y;
+			highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
+		}
 	}
 
 	// Use this for initialization
@@ -195,6 +212,23 @@ public class Map : MonoBehaviour {
 //		else{
 //			movesLefttxt.text=" ";
 //		}
+
+	}
+
+	//method that switches the turn by setting the isMoved flag to true for one side
+	//and doing the opposite for the other
+	public void OnClick() {
+		print(unitsAlly.Count+ " units in list");
+		//switches the allies isMoved
+		for (int i = 0; i < unitsAlly.Count; i++) {
+			unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
+		}
+		//switches the enemies button
+		for (int i = 0; i < unitsEnemy.Count; i++) {
+			unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
+		}
+		playerTurn = !playerTurn;
+		print("It is " + playerTurn + " that it is the player's turn");
 	}
 
 	public class Coordinate{
