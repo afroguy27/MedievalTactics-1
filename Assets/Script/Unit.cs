@@ -20,29 +20,24 @@ public class Unit : MonoBehaviour {
 	public bool isMoved = false;
 	//public bool tileSelected = false;
 
-
 	[SerializeField]
 	Map map;
 
-
-	// Use this for initialization
-	void Start () {
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public void OnClick(){
-
+		//if there is no focused unit then it makes the clicked unit the focused unit
 		if (map.FocusedUnit == null) {
 			print ("selecting unit");
 			map.FocusedUnit = this;
-			map.highlightMovable (map.FocusedUnit.move + map.GetTile (x, y).cost, map.FocusedUnit.x, map.FocusedUnit.y);
-			map.highlightAttackable (map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
-		} else if (map.FocusedUnit == this) {
-			print ("deselecting");
+			//if the focused unit has not been moved then...
+			if (!map.FocusedUnit.isMoved) {
+				map.highlightMovable (map.FocusedUnit.move + map.GetTile (x, y).cost, map.FocusedUnit.x, map.FocusedUnit.y);
+				map.highlightAttackable (map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
+			} else { //if the unit has been moved, deselects it
+				print("deselecting");
+				map.FocusedUnit = null;
+			}
+		} else if(map.FocusedUnit == this){
+			print("deselecting");
 			map.FocusedUnit = null;
 			map.clearHighlightMove ();
 			map.clearHighlightAttack ();

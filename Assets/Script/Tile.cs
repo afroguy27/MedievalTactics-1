@@ -68,18 +68,9 @@ public class Tile : MonoBehaviour {
 				map.destinationTile = this;
 				print ("Destination tile " + map.destinationTile.X + " " + map.destinationTile.Y);
 				map.moveUnit (this, map.FocusedUnit);
-				print ("forcused unit " + map.FocusedUnit.x + " " + map.FocusedUnit.y);
+				print ("focused unit " + map.FocusedUnit.x + " " + map.FocusedUnit.y);
 			}
 		}
 	}
-
-	// Use this for initialization
-	void Start () {
-		//GetComponent<Button>().onClick.AddListener(OnClick);
-	}
-	
-	// Update is called once per frame
-	void Update () {
 		
-	}
 }
