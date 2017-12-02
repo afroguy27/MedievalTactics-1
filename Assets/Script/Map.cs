@@ -64,6 +64,7 @@ public class Map : MonoBehaviour {
 	{
 		toUnit.loseHealth (fromUnit.ATK);
 		//FocusedUnit.isMoved = true;
+		toUnit.isDead();
 	}
 
 	public void highlightAttackable(int range, int x, int y){

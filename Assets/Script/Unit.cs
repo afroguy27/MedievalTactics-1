@@ -48,7 +48,7 @@ public class Unit : MonoBehaviour {
 			map.clearHighlightAttack ();
 		} else {
 
-			if (map.GetUnit (map.FocusedUnit.x, map.FocusedUnit.y).isEnemy != this.isEnemy) {
+			if (map.GetUnit (map.FocusedUnit.x, map.FocusedUnit.y).isEnemy != this.isEnemy && map.GetTile(this.x, this.y).IsAttackable) {
 				print (map.FocusedUnit.name + " attacking to " + this.name);
 				print (this.health + "current");
 				map.AttackTo (map.GetUnit (map.FocusedUnit.x, map.FocusedUnit.y), this);
