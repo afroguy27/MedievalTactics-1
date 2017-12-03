@@ -199,6 +199,7 @@ public class Map : MonoBehaviour {
 				print ("Cannot attack hence deselect");
 				FocusedUnit = null;
 			}
+			Focus.isMoved = true;
 		}
 	}
 
@@ -224,11 +225,13 @@ public class Map : MonoBehaviour {
 		print(unitsAlly.Count+ " units in list");
 		//switches the allies isMoved
 		for (int i = 0; i < unitsAlly.Count; i++) {
-			unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
+			if(unitsAlly[i].isMoved == !playerTurn)
+				unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
 		}
 		//switches the enemies button
 		for (int i = 0; i < unitsEnemy.Count; i++) {
-			unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
+			if(unitsEnemy[i].isMoved == playerTurn)
+				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
 		}
 		playerTurn = !playerTurn;
 		print("It is " + playerTurn + " that it is the player's turn");

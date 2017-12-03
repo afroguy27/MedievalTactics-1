@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour {
 	public int range;
 	public int move;
 	public int movesCount=0;
+	public int vision;
 
 	public bool isEnemy;
 	public int x;
