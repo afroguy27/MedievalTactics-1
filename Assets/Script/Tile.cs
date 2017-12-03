@@ -68,7 +68,7 @@ public class Tile : MonoBehaviour {
 				map.destinationTile = this;
 				print ("Destination tile " + map.destinationTile.X + " " + map.destinationTile.Y);
 				map.moveUnit (this, map.FocusedUnit);
-				print ("focused unit " + map.FocusedUnit.x + " " + map.FocusedUnit.y);
+				//print ("focused unit " + map.FocusedUnit.x + " " + map.FocusedUnit.y);
 			}
 		}
 	}
