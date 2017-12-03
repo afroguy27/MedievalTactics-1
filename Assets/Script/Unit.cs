@@ -76,6 +76,10 @@ public class Unit : MonoBehaviour {
 
 	}
 
+	public virtual void betray(){
+
+	}
+
 	// Use this for initialization
 	public void hovered(){
 		if (map.FocusedUnit == null) {
