@@ -35,6 +35,15 @@ public class Map : MonoBehaviour {
 	public Button button; //button instance
 	public bool playerTurn = true; //boolean value used for determining player turn
 
+	//Stuff for UI
+	string healthStr=" ";
+	string atkStr=" ";
+	string rangeStr=" ";
+	public Text healthtxt;
+	public Text atktxt;
+	public Text rangetxt;
+
+
 	//lists of ally and enemy units
 	public List<Unit> unitsAlly = new List<Unit> (10);
 	public List<Unit> unitsEnemy = new List<Unit> (10);
@@ -205,23 +214,9 @@ public class Map : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//TODO: Broke Unity Please Fix
-//		healthtxt.text = "Health: " + healthStr;
-//		atktxt.text = "Attack: " + atkStr;
-//		rangetxt.text = "Attack Range: " + rangeStr;
-//		if (FocusedUnit != null) {
-//			if (FocusedUnit.isMoved) {
-//				movesLeftStr = "0";
-//			} else {
-//				movesLeft = FocusedUnit.move - FocusedUnit.movesCount;
-//				movesLeftStr = movesLeft.ToString ();
-//			}
-//
-//			movesLefttxt.text="Moves Left: "+movesLeftStr;
-//		}
-//		else{
-//			movesLefttxt.text=" ";
-//		}
-
+		healthtxt.text = "Health: " + healthStr;
+		atktxt.text = "Attack: " + atkStr;
+		rangetxt.text = "Attack Range: " + rangeStr;
 	}
 
 	//method that switches the turn by setting the isMoved flag to true for one side
@@ -270,18 +265,38 @@ public class Map : MonoBehaviour {
 
 	public void setHealthStr(string a){
 		// TODO: Broke Unity Please Fix
-		//healthStr = a;
+		healthStr = a;
 	}
 
 	public void setAtkStr(string a){
 		// TODO: Broke Unity Please Fix
-		//atkStr = a;
+		atkStr = a;
 	}
 
 	public void setRangeStr(string a){
 		// TODO: Broke Unity Please Fix
-		//rangeStr = a;
+		rangeStr = a;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public void GenerateMap(){
 
