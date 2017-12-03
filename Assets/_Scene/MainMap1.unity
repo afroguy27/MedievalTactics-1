@@ -2018,6 +2018,7 @@ MonoBehaviour:
   range: 1
   move: 3
   movesCount: 0
+  vision: 0
   isEnemy: 0
   x: 0
   y: 0
@@ -3262,7 +3263,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.086496584}
-  m_SizeDelta: {x: 0, y: 400}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1796028794
 Prefab:
@@ -3767,7 +3768,7 @@ Prefab:
     - target: {fileID: 114156884741337326, guid: d88b11d615845b248a69a0aad789ead7,
         type: 2}
       propertyPath: range
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d88b11d615845b248a69a0aad789ead7, type: 2}
