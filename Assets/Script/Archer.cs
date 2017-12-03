@@ -28,4 +28,8 @@ public class Archer : Unit {
 	public override void loseHealth(int ATK){
 		health -= ATK;
 	}
+
+	public override void betray(){
+
+	}
 }

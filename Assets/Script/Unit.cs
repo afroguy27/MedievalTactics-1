@@ -58,7 +58,7 @@ public class Unit : MonoBehaviour {
 			}
 		}
 	}
-		
+
 
 	public void moveUnit(Tile destination, Unit focused){
 		print ("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
@@ -85,6 +85,10 @@ public class Unit : MonoBehaviour {
 	public void recolor(){
 		var image = GetComponent<Image> ();
 		image.color = new Color (1.0f, 1.0f, 1.0f);
+	}
+
+	public virtual void betray(){
+		//overridden in children classes
 	}
 
 	// Use this for initialization
