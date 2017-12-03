@@ -89,12 +89,12 @@ public class Map : MonoBehaviour {
 		// print ("range is " + range);
 		if (range == 0) {
 			highlightAttack(x, y);
-			highlightedAttackTiles.Add (GetTile(x,y));
+			//highlightedAttackTiles.Add (GetTile(x,y));
 			//print (x + ", " + y + " is attackable.");
 
 		} else {
 			highlightAttack(x, y);
-			highlightedAttackTiles.Add (GetTile(x,y));
+			//highlightedAttackTiles.Add (GetTile(x,y));
 			//print (x + ", " + y + " is attackable.");
 			if (x != 0) {
 				highlightAttackable (range - 1, x - 1, y);
@@ -146,6 +146,7 @@ public class Map : MonoBehaviour {
 		} else {
 			if(GetTile(x, y).Unit != null && GetTile(x, y).Unit.isEnemy != FocusedUnit.isEnemy){
 				GetTile(x, y).IsAttackable = true;
+				highlightedAttackTiles.Add (GetTile(x,y));
 				//GetTile (x, y).Unit.GetComponent<Button> ().interactable = true;
 			}
 		}
@@ -185,6 +186,10 @@ public class Map : MonoBehaviour {
 			FocusedUnit.x = target.X;
 			FocusedUnit.y = target.Y;
 			highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
+			if (highlightedAttackTiles.Count == 0) {
+				print ("Cannot attack hence deselect");
+				FocusedUnit = null;
+			}
 			Focus.isMoved = true;
 		}
 	}
