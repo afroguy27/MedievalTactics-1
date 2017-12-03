@@ -30,6 +30,13 @@ public class Swordman : Unit {
 	}
 
 	public override void betray(){
+		var rand = UnityEngine.Random.Range(0, 10);
+		if (!hasBetrayed && rand == 0) {
+			//TODO
+			//change sprite image
+			//remove this unit from the Unit list it is currently in 
+			//add to the opponent side unit list 
 
+		}
 	}
 }
