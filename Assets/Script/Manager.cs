@@ -40,12 +40,12 @@ public class Manager : MonoBehaviour {
 		EnemySwordmanPrefab.gameObject.SetActive (false);
 
 
-		map.PutUnit (0, 4, KingPrefab, false);
+		map.PutUnit (0, 5, KingPrefab, false);
 		map.PutUnit (0, 6, ArcherPrefab, false);
 		map.PutUnit (1, 5, SwordmanPrefab, false);
-		map.PutUnit (1,7, SwordmanPrefab, false);
+		map.PutUnit (1,6, SwordmanPrefab, false);
 
-		map.PutUnit (1, 4, EnemyKingPrefab, true);
+		map.PutUnit (19, 5, EnemyKingPrefab, true);
 		map.PutUnit (19, 6, EnemyArcherPrefab, true);
 		map.PutUnit (18, 5, EnemySwordmanPrefab, true);
 		map.PutUnit (18, 6, EnemySwordmanPrefab, true);
