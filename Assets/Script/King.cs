@@ -46,6 +46,11 @@ public class King : Unit {
 		health -= ATK;
 	}
 
+	public override void betray(){
+		//Kings do not betray
+		//this function should be empty
+	}
+
 	//void OnMouseOver(){
 	//	print (gameObject.name);
 	//	print("Health: " + health);
