@@ -226,11 +226,13 @@ public class Map : MonoBehaviour {
 		print(unitsAlly.Count+ " units in list");
 		//switches the allies isMoved
 		for (int i = 0; i < unitsAlly.Count; i++) {
+			unitsAlly [i].recolor ();
 			if(unitsAlly[i].isMoved == !playerTurn)
 				unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
 		}
 		//switches the enemies button
 		for (int i = 0; i < unitsEnemy.Count; i++) {
+			unitsEnemy [i].recolor ();
 			if(unitsEnemy[i].isMoved == playerTurn)
 				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
 		}
