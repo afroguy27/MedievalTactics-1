@@ -197,6 +197,7 @@ public class Map : MonoBehaviour {
 			highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
 			if (highlightedAttackTiles.Count == 0) {
 				print ("Cannot attack hence deselect");
+				GetUnit (FocusedUnit.x, FocusedUnit.y).discolor ();
 				FocusedUnit = null;
 			}
 			Focus.isMoved = true;
