@@ -285,7 +285,7 @@ public class Map : MonoBehaviour {
 
 				unitsEnemy [i].isEnemy = false; //sets it to enemy status
 				unitsEnemy [i].hasBetrayed = true; //sets that it has betrayed
-				unitsAlly.Add (unitsAlly [i]); //adds the unit to the enemy list
+				unitsAlly.Add (unitsEnemy [i]); //adds the unit to the enemy list
 				unitsEnemy.RemoveAt(i); //removes the unit from the ally list
 
 			}
