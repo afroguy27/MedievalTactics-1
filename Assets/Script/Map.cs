@@ -234,8 +234,7 @@ public class Map : MonoBehaviour {
 
 		if (playerTurn)
 			betrayBlue (); //any ally units that have less than 2 rations will betray
-		else
-			betrayRed (); //same for red side
+		
 		
 		//switches the enemies button
 		for (int i = 0; i < unitsEnemy.Count; i++) {
@@ -243,6 +242,10 @@ public class Map : MonoBehaviour {
 			if(unitsEnemy[i].isMoved == playerTurn)
 				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
 		}
+
+		if(!playerTurn)
+			betrayRed (); //same for red side
+		
 		playerTurn = !playerTurn;
 		print("It is " + playerTurn + " that it is the player's turn");
 	}
