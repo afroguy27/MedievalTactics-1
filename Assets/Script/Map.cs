@@ -92,6 +92,14 @@ public class Map : MonoBehaviour {
 		toUnit.loseHealth (fromUnit.ATK);
 		fromUnit.isMoved = true;
 		fromUnit.hasAttacked=true;
+		if (playerTurn) {
+			if (toUnit.health <= 0)
+				unitsEnemy.Remove (toUnit);
+		}
+		else{
+			if (toUnit.health <= 0)
+				unitsAlly.Remove (toUnit);
+		}
 		toUnit.isDead();
 	}
 
