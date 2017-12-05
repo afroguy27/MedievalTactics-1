@@ -90,7 +90,8 @@ public class Map : MonoBehaviour {
 	public void AttackTo(Unit fromUnit, Unit toUnit)
 	{
 		toUnit.loseHealth (fromUnit.ATK);
-		//FocusedUnit.isMoved = true;
+		fromUnit.isMoved = true;
+		fromUnit.hasAttacked=true;
 		toUnit.isDead();
 	}
 
@@ -218,26 +219,15 @@ public class Map : MonoBehaviour {
 		healthtxt.text = "Health: " + healthStr;
 		atktxt.text = "Attack: " + atkStr;
 		rangetxt.text = "Attack Range: " + rangeStr;
+		if (Input.GetKeyDown(KeyCode.Mouse1))
+			endTurn();
+
 	}
 
 	//method that switches the turn by setting the isMoved flag to true for one side
 	//and doing the opposite for the other
 	public void OnClick() {
-		print(unitsAlly.Count+ " units in list");
-		//switches the allies isMoved
-		for (int i = 0; i < unitsAlly.Count; i++) {
-			unitsAlly [i].recolor ();
-			if(unitsAlly[i].isMoved == !playerTurn)
-				unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
-		}
-		//switches the enemies button
-		for (int i = 0; i < unitsEnemy.Count; i++) {
-			unitsEnemy [i].recolor ();
-			if(unitsEnemy[i].isMoved == playerTurn)
-				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
-		}
-		playerTurn = !playerTurn;
-		print("It is " + playerTurn + " that it is the player's turn");
+		endTurn ();
 	}
 
 	public class Coordinate{
@@ -280,7 +270,34 @@ public class Map : MonoBehaviour {
 		// TODO: Broke Unity Please Fix
 		rangeStr = a;
 	}
-
+	public void endTurn(){
+		print(unitsAlly.Count+ " units in list");
+		//switches the allies isMoved
+		for (int i = 0; i < unitsAlly.Count; i++) {
+			unitsAlly [i].recolor ();
+			if(unitsAlly[i].isMoved == !playerTurn)
+				unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
+		}
+		for (int i = 0; i < unitsAlly.Count; i++) {
+			if(unitsAlly[i].hasAttacked == !playerTurn)
+				unitsAlly[i].hasAttacked = !unitsAlly[i].hasAttacked;
+		}
+		//switches the enemies button
+		for (int i = 0; i < unitsEnemy.Count; i++) {
+			unitsEnemy [i].recolor ();
+			if(unitsEnemy[i].isMoved == playerTurn)
+				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
+		}
+		for (int i = 0; i < unitsEnemy.Count; i++) {
+			if(unitsEnemy[i].hasAttacked == playerTurn)
+				unitsEnemy[i].hasAttacked = !unitsEnemy[i].hasAttacked;
+		}
+		playerTurn = !playerTurn;
+		clearHighlightMove();
+		clearHighlightAttack();
+		FocusedUnit = null;
+		print("It is " + playerTurn + " that it is the player's turn");
+	}
 
 
 
