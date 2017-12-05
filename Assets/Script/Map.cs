@@ -91,6 +91,7 @@ public class Map : MonoBehaviour {
 	{
 		toUnit.loseHealth (fromUnit.ATK);
 		//FocusedUnit.isMoved = true;
+		FocusedUnit.hasAttacked=true;
 		toUnit.isDead();
 	}
 
@@ -230,11 +231,19 @@ public class Map : MonoBehaviour {
 			if(unitsAlly[i].isMoved == !playerTurn)
 				unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
 		}
+		for (int i = 0; i < unitsAlly.Count; i++) {
+			if(unitsAlly[i].hasAttacked == !playerTurn)
+				unitsAlly[i].hasAttacked = !unitsAlly[i].hasAttacked;
+		}
 		//switches the enemies button
 		for (int i = 0; i < unitsEnemy.Count; i++) {
 			unitsEnemy [i].recolor ();
 			if(unitsEnemy[i].isMoved == playerTurn)
 				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
+		}
+		for (int i = 0; i < unitsEnemy.Count; i++) {
+			if(unitsEnemy[i].hasAttacked == playerTurn)
+				unitsEnemy[i].hasAttacked = !unitsEnemy[i].hasAttacked;
 		}
 		playerTurn = !playerTurn;
 		print("It is " + playerTurn + " that it is the player's turn");

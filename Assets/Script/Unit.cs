@@ -19,6 +19,7 @@ public class Unit : MonoBehaviour {
 	public bool isFocused;
 	public bool hasBetrayed;
 	public bool isMoved = false;
+	public bool hasAttacked=false;
 	//public bool tileSelected = false;
 
 	[SerializeField]
@@ -29,13 +30,17 @@ public class Unit : MonoBehaviour {
 		if (map.FocusedUnit == null) {
 			print ("selecting unit");
 			map.FocusedUnit = this;
-			//if the focused unit has not been moved then...
-			if (!map.FocusedUnit.isMoved) {
-				map.highlightMovable (map.FocusedUnit.move + map.GetTile (x, y).cost, map.FocusedUnit.x, map.FocusedUnit.y);
-				map.highlightAttackable (map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
-			} else { //if the unit has been moved, deselects it
-				print("deselecting");
-				map.FocusedUnit = null;
+
+			if (!map.FocusedUnit.hasAttacked) {
+				//if the focused unit has not been moved then...
+				if (!map.FocusedUnit.isMoved) {
+					map.highlightMovable (map.FocusedUnit.move + map.GetTile (x, y).cost, map.FocusedUnit.x, map.FocusedUnit.y);
+				}if (!map.FocusedUnit.hasAttacked) {
+					map.highlightAttackable (map.FocusedUnit.range, map.FocusedUnit.x, map.FocusedUnit.y);
+				} else { //if the unit has been moved, deselects it
+					print ("deselecting");
+					map.FocusedUnit = null;
+				}
 			}
 		} else if(map.FocusedUnit == this){
 			print("deselecting");
@@ -54,7 +59,7 @@ public class Unit : MonoBehaviour {
 				map.clearHighlightMove ();
 				map.FocusedUnit = null;
 			} else {
-				print ("cant attack your team");
+				print ("can't attack");
 			}
 		}
 	}
