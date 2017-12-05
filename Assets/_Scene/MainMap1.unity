@@ -343,9 +343,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300002, guid: b3cecbbf06b06f7459e33a79ef02858e,
         type: 3}
-      propertyPath: vision
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d30f4e0a4c6a10d4d8842351a8f75f54, type: 2}
   m_IsPrefabParent: 0
@@ -1066,6 +1063,80 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1 &763152284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 763152285}
+  - component: {fileID: 763152287}
+  - component: {fileID: 763152286}
+  m_Layer: 5
+  m_Name: RationText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &763152285
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 763152284}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1704760325}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -575}
+  m_SizeDelta: {x: 400, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &763152286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 763152284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 2
+    m_MaxSize: 100
+    m_Alignment: 0
+    m_AlignByGeometry: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &763152287
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 763152284}
 --- !u!1 &806723442
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,8 +2096,6 @@ Prefab:
         type: 2}
       propertyPath: rations
       value: 99
-      propertyPath: vision
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61985420651637132, guid: 3edf0f17193cae44aba348bf70c71f4b, type: 2}
@@ -2057,13 +2126,14 @@ MonoBehaviour:
   rations: 10
   blueTeam: {fileID: 21300002, guid: b185519ef171e634cbf699ea13d4a2c7, type: 3}
   redTeam: {fileID: 21300002, guid: b3cecbbf06b06f7459e33a79ef02858e, type: 3}
-  vision: 3
   isEnemy: 0
   x: 0
   y: 0
   isFocused: 0
   hasBetrayed: 0
   isMoved: 0
+  sprite: {fileID: 0}
+  hasAttacked: 0
   map: {fileID: 1738593907}
 --- !u!114 &1254711844 stripped
 MonoBehaviour:
@@ -2271,8 +2341,6 @@ Prefab:
         type: 2}
       propertyPath: rations
       value: 99
-      propertyPath: vision
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f847755bda0dd9542826c79c5627c80a, type: 2}
@@ -3027,6 +3095,7 @@ RectTransform:
   - {fileID: 203538597}
   - {fileID: 1123041238}
   - {fileID: 1728472681}
+  - {fileID: 763152285}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3204,7 +3273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.48955068, y: 0.5}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -234.25, y: -135.50002}
+  m_AnchoredPosition: {x: -250.64996, y: -135.50002}
   m_SizeDelta: {x: 468.5, y: 271}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732672862
@@ -3328,6 +3397,7 @@ MonoBehaviour:
   healthtxt: {fileID: 891690441}
   atktxt: {fileID: 473475579}
   rangetxt: {fileID: 203538599}
+  rationtxt: {fileID: 763152286}
   unitsAlly: []
   unitsEnemy: []
 --- !u!222 &1738593908
@@ -3783,9 +3853,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300002, guid: 87510f23e8e17af4fad5e2913b88cdd0,
         type: 3}
-      propertyPath: vision
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f04bee4a7bc72614f9953403fc77af23, type: 2}
   m_IsPrefabParent: 0
@@ -3932,9 +3999,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300002, guid: 87510f23e8e17af4fad5e2913b88cdd0,
         type: 3}
-      propertyPath: vision
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d88b11d615845b248a69a0aad789ead7, type: 2}
   m_IsPrefabParent: 0

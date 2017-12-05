@@ -39,9 +39,11 @@ public class Map : MonoBehaviour {
 	string healthStr=" ";
 	string atkStr=" ";
 	string rangeStr=" ";
+	string rationStr=" ";
 	public Text healthtxt;
 	public Text atktxt;
 	public Text rangetxt;
+	public Text rationtxt;
 
 
 	//lists of ally and enemy units
@@ -228,6 +230,7 @@ public class Map : MonoBehaviour {
 		healthtxt.text = "Health: " + healthStr;
 		atktxt.text = "Attack: " + atkStr;
 		rangetxt.text = "Attack Range: " + rangeStr;
+		rationtxt.text = "Rations: " + rationStr;
 		if (Input.GetKeyDown(KeyCode.Mouse1))
 			endTurn();
 
@@ -333,6 +336,12 @@ public class Map : MonoBehaviour {
 		// TODO: Broke Unity Please Fix
 		rangeStr = a;
 	}
+
+	public void setRationStr(string a){
+		// TODO: Broke Unity Please Fix
+		rationStr = a;
+	}
+
 
 	public void endTurn(){
 		print(unitsAlly.Count+ " units in list");

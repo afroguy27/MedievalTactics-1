@@ -126,6 +126,7 @@ public class Unit : MonoBehaviour {
 			map.setHealthStr (health.ToString ());
 			map.setAtkStr (ATK.ToString ());
 			map.setRangeStr (range.ToString ());
+			map.setRationStr (rations.ToString ());
 		}
 	}
 	public void unhovered(){
@@ -133,6 +134,7 @@ public class Unit : MonoBehaviour {
 			map.setHealthStr (" ");
 			map.setAtkStr (" ");
 			map.setRangeStr (" ");
+			map.setRationStr (" ");
 		}
 	}
 	public void updateMovesCount(){
