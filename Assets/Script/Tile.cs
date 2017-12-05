@@ -49,7 +49,7 @@ public class Tile : MonoBehaviour {
 		get { return highlight.gameObject.activeSelf && highlight.color == attackableColor; }
 	}
 
-	
+
 	public Unit Unit
 	{
 		get { return map.GetUnit(x, y); }

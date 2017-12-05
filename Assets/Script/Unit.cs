@@ -12,6 +12,9 @@ public class Unit : MonoBehaviour {
 	public int move;
 	public int movesCount=0;
 	public int vision;
+	public int rations;
+	public Sprite blueTeam;
+	public Sprite redTeam;
 
 	public bool isEnemy;
 	public int x;
@@ -19,6 +22,7 @@ public class Unit : MonoBehaviour {
 	public bool isFocused;
 	public bool hasBetrayed;
 	public bool isMoved = false;
+	public Image sprite;
 	public bool hasAttacked=false;
 	//public bool tileSelected = false;
 
@@ -39,9 +43,10 @@ public class Unit : MonoBehaviour {
 				print ("deselecting");
 				map.FocusedUnit = null;
 			}
-		} else if (map.FocusedUnit == this) {
-			print ("deselecting");
-			map.FocusedUnit = null;
+
+		} else if(map.FocusedUnit == this){
+			print("deselecting");
+			map.FocusedUnit = null; //deselects the unit
 			map.clearHighlightMove ();
 			map.clearHighlightAttack ();
 		} else {
@@ -62,15 +67,13 @@ public class Unit : MonoBehaviour {
 
 	}
 		
-
-	public void moveUnit(Tile destination, Unit focused){
+	/*public void moveUnit(Tile destination, Unit focused){
 		print ("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 		if((destination.X==(focused.x+1)||destination.X==(focused.x-1))&&(destination.Y==(focused.y+1)||destination.Y==(focused.y-1))){
 			focused.x = destination.X;
 			focused.y = destination.Y;
 		}
-
-	}
+	}*/
 
 	public virtual void isDead(){
 
@@ -89,6 +92,33 @@ public class Unit : MonoBehaviour {
 		var image = GetComponent<Image> ();
 		image.color = new Color (1.0f, 1.0f, 1.0f);
 	}
+		
+	/*public void betray(){
+		for (int i = 0; i < map.unitsAlly.Count; i++) {
+			if (map.unitsAlly [i].rations <= 2) {
+				sprite = map.unitsAlly [i].GetComponent<Image> ();
+
+				if(map.unitsAlly[i].CompareTag("BlueArcher")) {
+					map.unitsAlly [i].sprite.sprite = redTeam;
+				}
+				else if(map.unitsAlly[i].CompareTag("RedArcher")) {
+					map.unitsAlly [i].sprite.sprite = blueTeam;
+				}
+				else if(map.unitsAlly[i].CompareTag("BlueSwordsman")) {
+					map.unitsAlly [i].sprite.sprite = redTeam;
+				}
+				else if(map.unitsAlly[i].CompareTag("RedSwordsman")) {
+					map.unitsAlly [i].sprite.sprite = blueTeam;
+				}
+
+				map.unitsAlly [i].isEnemy = true;
+				map.unitsAlly [i].hasBetrayed = true;
+				map.unitsEnemy.Add (map.unitsAlly [i]);
+				map.unitsAlly.RemoveAt(i);
+
+			}
+		}
+	}*/
 
 	// Use this for initialization
 	public void hovered(){
