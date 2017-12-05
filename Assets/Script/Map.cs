@@ -246,6 +246,7 @@ public class Map : MonoBehaviour {
 				unitsEnemy[i].hasAttacked = !unitsEnemy[i].hasAttacked;
 		}
 		playerTurn = !playerTurn;
+		FocusedUnit = null;
 		print("It is " + playerTurn + " that it is the player's turn");
 	}
 
