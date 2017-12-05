@@ -3859,7 +3859,7 @@ Prefab:
     - target: {fileID: 114156884741337326, guid: d88b11d615845b248a69a0aad789ead7,
         type: 2}
       propertyPath: range
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114156884741337326, guid: d88b11d615845b248a69a0aad789ead7,
         type: 2}
