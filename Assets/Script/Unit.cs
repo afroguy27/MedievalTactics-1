@@ -66,8 +66,7 @@ public class Unit : MonoBehaviour {
 		}
 
 	}
-
-
+		
 	/*public void moveUnit(Tile destination, Unit focused){
 		print ("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 		if((destination.X==(focused.x+1)||destination.X==(focused.x-1))&&(destination.Y==(focused.y+1)||destination.Y==(focused.y-1))){
@@ -83,7 +82,7 @@ public class Unit : MonoBehaviour {
 	public virtual void loseHealth(int ATK){
 
 	}
-		
+
 	public void discolor(){
 		var image = GetComponent<Image> ();
 		image.color = new Color (0.4f, 0.4f, 0.4f);
