@@ -322,6 +322,27 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114897333126938248, guid: d30f4e0a4c6a10d4d8842351a8f75f54,
+        type: 2}
+      propertyPath: rations
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939226469371788, guid: d30f4e0a4c6a10d4d8842351a8f75f54, type: 2}
+      propertyPath: m_TagString
+      value: RedSwordsman
+      objectReference: {fileID: 0}
+    - target: {fileID: 114897333126938248, guid: d30f4e0a4c6a10d4d8842351a8f75f54,
+        type: 2}
+      propertyPath: blueTeam
+      value: 
+      objectReference: {fileID: 21300002, guid: b185519ef171e634cbf699ea13d4a2c7,
+        type: 3}
+    - target: {fileID: 114897333126938248, guid: d30f4e0a4c6a10d4d8842351a8f75f54,
+        type: 2}
+      propertyPath: redTeam
+      value: 
+      objectReference: {fileID: 21300002, guid: b3cecbbf06b06f7459e33a79ef02858e,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d30f4e0a4c6a10d4d8842351a8f75f54, type: 2}
   m_IsPrefabParent: 0
@@ -1616,6 +1637,13 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 1176335507104890, guid: 3c46438e6b2576540836ae56b95bf8df, type: 2}
+      propertyPath: m_TagString
+      value: BlueSwordsman
+      objectReference: {fileID: 0}
+>>>>>>> betrayal branch initial commit
     m_RemovedComponents:
     - {fileID: 114006109027423108, guid: 3c46438e6b2576540836ae56b95bf8df, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3c46438e6b2576540836ae56b95bf8df, type: 2}
@@ -1993,6 +2021,14 @@ Prefab:
       value: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 114700233817402778, guid: 3edf0f17193cae44aba348bf70c71f4b,
+        type: 2}
+      propertyPath: rations
+      value: 99
+      objectReference: {fileID: 0}
+>>>>>>> betrayal branch initial commit
     m_RemovedComponents:
     - {fileID: 61985420651637132, guid: 3edf0f17193cae44aba348bf70c71f4b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3edf0f17193cae44aba348bf70c71f4b, type: 2}
@@ -2019,6 +2055,12 @@ MonoBehaviour:
   move: 3
   movesCount: 0
   vision: 0
+<<<<<<< HEAD
+=======
+  rations: 10
+  blueTeam: {fileID: 21300002, guid: b185519ef171e634cbf699ea13d4a2c7, type: 3}
+  redTeam: {fileID: 21300002, guid: b3cecbbf06b06f7459e33a79ef02858e, type: 3}
+>>>>>>> betrayal branch initial commit
   isEnemy: 0
   x: 0
   y: 0
@@ -2228,6 +2270,14 @@ Prefab:
       propertyPath: rangetxt
       value: 
       objectReference: {fileID: 203538599}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 114436367799982464, guid: f847755bda0dd9542826c79c5627c80a,
+        type: 2}
+      propertyPath: rations
+      value: 99
+      objectReference: {fileID: 0}
+>>>>>>> betrayal branch initial commit
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f847755bda0dd9542826c79c5627c80a, type: 2}
   m_IsPrefabParent: 0
@@ -3645,6 +3695,30 @@ Prefab:
       propertyPath: rangetxt
       value: 
       objectReference: {fileID: 203538599}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 114430368340180258, guid: f04bee4a7bc72614f9953403fc77af23,
+        type: 2}
+      propertyPath: rations
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278029340008724, guid: f04bee4a7bc72614f9953403fc77af23, type: 2}
+      propertyPath: m_TagString
+      value: BlueArcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 114430368340180258, guid: f04bee4a7bc72614f9953403fc77af23,
+        type: 2}
+      propertyPath: blueTeam
+      value: 
+      objectReference: {fileID: 21300002, guid: d953c78ec80bae444a59b7c11e48a0c7,
+        type: 3}
+    - target: {fileID: 114430368340180258, guid: f04bee4a7bc72614f9953403fc77af23,
+        type: 2}
+      propertyPath: redTeam
+      value: 
+      objectReference: {fileID: 21300002, guid: 87510f23e8e17af4fad5e2913b88cdd0,
+        type: 3}
+>>>>>>> betrayal branch initial commit
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f04bee4a7bc72614f9953403fc77af23, type: 2}
   m_IsPrefabParent: 0
@@ -3770,6 +3844,30 @@ Prefab:
       propertyPath: range
       value: 3
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 114156884741337326, guid: d88b11d615845b248a69a0aad789ead7,
+        type: 2}
+      propertyPath: rations
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674284130110144, guid: d88b11d615845b248a69a0aad789ead7, type: 2}
+      propertyPath: m_TagString
+      value: RedArcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 114156884741337326, guid: d88b11d615845b248a69a0aad789ead7,
+        type: 2}
+      propertyPath: blueTeam
+      value: 
+      objectReference: {fileID: 21300002, guid: d953c78ec80bae444a59b7c11e48a0c7,
+        type: 3}
+    - target: {fileID: 114156884741337326, guid: d88b11d615845b248a69a0aad789ead7,
+        type: 2}
+      propertyPath: redTeam
+      value: 
+      objectReference: {fileID: 21300002, guid: 87510f23e8e17af4fad5e2913b88cdd0,
+        type: 3}
+>>>>>>> betrayal branch initial commit
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d88b11d615845b248a69a0aad789ead7, type: 2}
   m_IsPrefabParent: 0

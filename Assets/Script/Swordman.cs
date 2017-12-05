@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Swordman : Unit {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		
@@ -28,8 +23,8 @@ public class Swordman : Unit {
 	public override void loseHealth(int ATK){
 		health -= ATK;
 	}
-
-	public override void betray(){
+		
+	/*public override void betray(){
 		var rand = UnityEngine.Random.Range(0, 10);
 		if (!hasBetrayed && rand == 0) {
 			//TODO
@@ -38,5 +33,5 @@ public class Swordman : Unit {
 			//add to the opponent side unit list 
 
 		}
-	}
+	}*/
 }

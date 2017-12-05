@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Archer : Unit {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+		/*if (this.isEnemy) {
+			sprite = this.GetComponent<Image> ();
+			this.sprite.sprite = redTeam;
+		} else {
+			sprite = this.GetComponent<Image> ();
+			this.sprite.sprite = blueTeam;
+		}*/
 	}
 
 	public override void isDead(){
@@ -29,7 +32,8 @@ public class Archer : Unit {
 		health -= ATK;
 	}
 
-	public override void betray(){
+
+	/*public override void betray(){
 		var rand = UnityEngine.Random.Range(0, 10);
 		if (!hasBetrayed && rand == 0) {
 			//change sprite image
@@ -38,4 +42,5 @@ public class Archer : Unit {
 
 		}
 	}
+	*/
 }

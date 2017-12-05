@@ -50,12 +50,10 @@ public class Manager : MonoBehaviour {
 		map.PutUnit (18, 5, EnemySwordmanPrefab, true);
 		map.PutUnit (18, 6, EnemySwordmanPrefab, true);
 
-		//Sets the enemy sides 
+		//Sets the enemy sides isMoved to true so you can't use them
 		for (int i = 0; i < map.unitsEnemy.Count; i++) {
 			unit = map.unitsEnemy [i];
 			unit.isMoved = true;
-
-			//button.enabled = !button.enabled;
 		}
 	}
 		
