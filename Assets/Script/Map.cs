@@ -18,6 +18,8 @@ public class Map : MonoBehaviour {
 	Tile rockPrefab;
 	[SerializeField]
 	Tile treePrefab;
+	[SerializeField]
+	Tile housePrefab;
 
 	[SerializeField]
 	Transform UnitContainer;
@@ -358,6 +360,8 @@ public class Map : MonoBehaviour {
 			unitsEnemy [i].recolor ();
 			if(unitsEnemy[i].isMoved == playerTurn)
 				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
+			/*if (playerTurn && unitsEnemy [i]) {
+			}*/
 		}
 		for (int i = 0; i < unitsEnemy.Count; i++) {
 			if(unitsEnemy[i].hasAttacked == playerTurn)
@@ -537,12 +541,21 @@ public class Map : MonoBehaviour {
 		//6th column
 		for (var i = 0; i < 5; i++) {
 			//print ("Setting Coordinate : " + i + 6);
-			Tile tile;
-			tile = Instantiate(groundPrefab);
-			tile.gameObject.SetActive(true);
-			tile.transform.SetParent(transform);
-			tile.SetCoordinate (6, i);
-			tiles.Add(tile);
+			if (i == 1) {
+				Tile tile;
+				tile = Instantiate (housePrefab);
+				tile.gameObject.SetActive (true);
+				tile.transform.SetParent (transform);
+				tile.SetCoordinate (6, i);
+				tiles.Add (tile);
+			} else {
+				Tile tile;
+				tile = Instantiate (groundPrefab);
+				tile.gameObject.SetActive (true);
+				tile.transform.SetParent (transform);
+				tile.SetCoordinate (6, i);
+				tiles.Add (tile);
+			}
 		}
 
 		for (var i = 5; i < 7; i++) {
@@ -827,12 +840,21 @@ public class Map : MonoBehaviour {
 		//13th column
 		for(var i = 0; i < 9; i++){
 			//print ("Setting Coordinate : " + i + k);
-			Tile tile;
-			tile = Instantiate(groundPrefab);
-			tile.gameObject.SetActive(true);
-			tile.transform.SetParent(transform);
-			tile.SetCoordinate (13, i);
-			tiles.Add(tile);
+			if (i == 3) {
+				Tile tile;
+				tile = Instantiate (housePrefab);
+				tile.gameObject.SetActive (true);
+				tile.transform.SetParent (transform);
+				tile.SetCoordinate (13, i);
+				tiles.Add (tile);
+			} else {
+				Tile tile;
+				tile = Instantiate (groundPrefab);
+				tile.gameObject.SetActive (true);
+				tile.transform.SetParent (transform);
+				tile.SetCoordinate (13, i);
+				tiles.Add (tile);
+			}
 		}
 
 		for(var i = 9; i < 10; i++){
