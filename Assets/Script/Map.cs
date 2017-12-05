@@ -90,7 +90,16 @@ public class Map : MonoBehaviour {
 	public void AttackTo(Unit fromUnit, Unit toUnit)
 	{
 		toUnit.loseHealth (fromUnit.ATK);
-		//FocusedUnit.isMoved = true;
+		fromUnit.isMoved = true;
+		fromUnit.hasAttacked=true;
+		if (playerTurn) {
+			if (toUnit.health <= 0)
+				unitsEnemy.Remove (toUnit);
+		}
+		else{
+			if (toUnit.health <= 0)
+				unitsAlly.Remove (toUnit);
+		}
 		toUnit.isDead();
 	}
 
@@ -219,35 +228,15 @@ public class Map : MonoBehaviour {
 		healthtxt.text = "Health: " + healthStr;
 		atktxt.text = "Attack: " + atkStr;
 		rangetxt.text = "Attack Range: " + rangeStr;
+		if (Input.GetKeyDown(KeyCode.Mouse1))
+			endTurn();
+
 	}
 
 	//method that switches the turn by setting the isMoved flag to true for one side
 	//and doing the opposite for the other
 	public void OnClick() {
-		print(unitsAlly.Count+ " units in list");
-		//switches the allies isMoved
-		for (int i = 0; i < unitsAlly.Count; i++) {
-			unitsAlly [i].recolor ();
-			if(unitsAlly[i].isMoved == !playerTurn)
-				unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
-		}
-
-		if (playerTurn)
-			betrayBlue (); //any ally units that have less than 2 rations will betray
-		
-		
-		//switches the enemies button
-		for (int i = 0; i < unitsEnemy.Count; i++) {
-			unitsEnemy [i].recolor ();
-			if(unitsEnemy[i].isMoved == playerTurn)
-				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
-		}
-
-		if(!playerTurn)
-			betrayRed (); //same for red side
-		
-		playerTurn = !playerTurn;
-		print("It is " + playerTurn + " that it is the player's turn");
+		endTurn ();
 	}
 		
 	//goes through evry unit and decides if they will betray
@@ -343,6 +332,42 @@ public class Map : MonoBehaviour {
 	public void setRangeStr(string a){
 		// TODO: Broke Unity Please Fix
 		rangeStr = a;
+	}
+
+	public void endTurn(){
+		print(unitsAlly.Count+ " units in list");
+		if(!playerTurn)
+			betrayRed (); //checks betray for red side
+
+		//switches the allies isMoved
+		for (int i = 0; i < unitsAlly.Count; i++) {
+			unitsAlly [i].recolor ();
+			if(unitsAlly[i].isMoved == !playerTurn)
+				unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
+		}
+		for (int i = 0; i < unitsAlly.Count; i++) {
+			if(unitsAlly[i].hasAttacked == !playerTurn)
+				unitsAlly[i].hasAttacked = !unitsAlly[i].hasAttacked;
+		}
+
+		if (playerTurn)
+			betrayBlue (); //any ally units that have less than 2 rations will betray
+		
+		//switches the enemies button
+		for (int i = 0; i < unitsEnemy.Count; i++) {
+			unitsEnemy [i].recolor ();
+			if(unitsEnemy[i].isMoved == playerTurn)
+				unitsEnemy[i].isMoved = !unitsEnemy[i].isMoved;
+		}
+		for (int i = 0; i < unitsEnemy.Count; i++) {
+			if(unitsEnemy[i].hasAttacked == playerTurn)
+				unitsEnemy[i].hasAttacked = !unitsEnemy[i].hasAttacked;
+		}
+		playerTurn = !playerTurn;
+		clearHighlightMove();
+		clearHighlightAttack();
+		FocusedUnit = null;
+		print("It is " + playerTurn + " that it is the player's turn");
 	}
 		
 	public void GenerateMap(){
