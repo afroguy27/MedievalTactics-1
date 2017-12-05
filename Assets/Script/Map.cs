@@ -210,6 +210,7 @@ public class Map : MonoBehaviour {
 				FocusedUnit = null;
 			}
 			Focus.isMoved = true;
+			Focus.rations -= 1;
 		}
 	}
 
@@ -236,6 +237,60 @@ public class Map : MonoBehaviour {
 	//and doing the opposite for the other
 	public void OnClick() {
 		endTurn ();
+	}
+		
+	//goes through evry unit and decides if they will betray
+	public void betrayBlue(){
+		//moves through the units
+		for (int i = 0; i < unitsAlly.Count; i++) {
+			//if the unit has 2 or less rations and has not betrayed yet
+			if (unitsAlly [i].rations <= 2 && !unitsAlly[i].hasBetrayed) {
+				//gets the Image component of the unit
+				unitsAlly[i].sprite = unitsAlly [i].GetComponent<Image> ();
+				//if the unit is a blue archer, makes it a red archer
+				if(unitsAlly[i].CompareTag("BlueArcher")) {
+					unitsAlly [i].sprite.sprite = unitsAlly[i].redTeam; //changes the sprite
+				}
+				//if the unit is a blue swordman, makes it a red swordman
+				else if(unitsAlly[i].CompareTag("BlueSwordsman")) {
+					unitsAlly [i].sprite.sprite = unitsAlly[i].redTeam; //changes the sprite
+				}
+
+				unitsAlly [i].isEnemy = true; //sets it to enemy status
+				unitsAlly [i].hasBetrayed = true; //sets that it has betrayed
+				unitsEnemy.Add (unitsAlly [i]); //adds the unit to the enemy list
+				unitsAlly.RemoveAt(i); //removes the unit from the ally list
+
+			}
+		}
+			
+	}
+
+	//goes through evry unit and decides if they will betray
+	public void betrayRed(){
+		//moves through the units
+		for (int i = 0; i < unitsEnemy.Count; i++) {
+			//if the unit has 2 or less rations and has not betrayed yet
+			if (unitsEnemy [i].rations <= 2 && !unitsEnemy[i].hasBetrayed) {
+				//gets the Image component of the unit
+				unitsEnemy[i].sprite = unitsEnemy [i].GetComponent<Image> ();
+				//if the unit is a red archer, makes it a blue archer
+				if(unitsEnemy[i].CompareTag("RedArcher")) {
+					unitsEnemy [i].sprite.sprite = unitsEnemy[i].blueTeam; //changes the sprite
+				}
+				//if the unit is a red swordman, makes it a blue swordman
+				else if(unitsEnemy[i].CompareTag("RedSwordsman")) {
+					unitsEnemy [i].sprite.sprite = unitsEnemy[i].blueTeam; //changes the sprite
+				}
+
+				unitsEnemy [i].isEnemy = false; //sets it to enemy status
+				unitsEnemy [i].hasBetrayed = true; //sets that it has betrayed
+				unitsAlly.Add (unitsEnemy [i]); //adds the unit to the enemy list
+				unitsEnemy.RemoveAt(i); //removes the unit from the ally list
+
+			}
+		}
+
 	}
 
 	public class Coordinate{
@@ -278,8 +333,12 @@ public class Map : MonoBehaviour {
 		// TODO: Broke Unity Please Fix
 		rangeStr = a;
 	}
+
 	public void endTurn(){
 		print(unitsAlly.Count+ " units in list");
+		if(!playerTurn)
+			betrayRed (); //checks betray for red side
+
 		//switches the allies isMoved
 		for (int i = 0; i < unitsAlly.Count; i++) {
 			unitsAlly [i].recolor ();
@@ -290,6 +349,10 @@ public class Map : MonoBehaviour {
 			if(unitsAlly[i].hasAttacked == !playerTurn)
 				unitsAlly[i].hasAttacked = !unitsAlly[i].hasAttacked;
 		}
+
+		if (playerTurn)
+			betrayBlue (); //any ally units that have less than 2 rations will betray
+		
 		//switches the enemies button
 		for (int i = 0; i < unitsEnemy.Count; i++) {
 			unitsEnemy [i].recolor ();
@@ -306,26 +369,7 @@ public class Map : MonoBehaviour {
 		FocusedUnit = null;
 		print("It is " + playerTurn + " that it is the player's turn");
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
 	public void GenerateMap(){
 
 		foreach (var tile in tiles) {
