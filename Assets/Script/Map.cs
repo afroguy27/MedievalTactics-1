@@ -41,9 +41,11 @@ public class Map : MonoBehaviour {
 	string healthStr=" ";
 	string atkStr=" ";
 	string rangeStr=" ";
+	string rationStr=" ";
 	public Text healthtxt;
 	public Text atktxt;
 	public Text rangetxt;
+	public Text rationtxt;
 
 
 	//lists of ally and enemy units
@@ -230,6 +232,7 @@ public class Map : MonoBehaviour {
 		healthtxt.text = "Health: " + healthStr;
 		atktxt.text = "Attack: " + atkStr;
 		rangetxt.text = "Attack Range: " + rangeStr;
+		rationtxt.text = "Rations: " + rationStr;
 		if (Input.GetKeyDown(KeyCode.Mouse1))
 			endTurn();
 
@@ -336,6 +339,12 @@ public class Map : MonoBehaviour {
 		rangeStr = a;
 	}
 
+	public void setRationStr(string a){
+		// TODO: Broke Unity Please Fix
+		rationStr = a;
+	}
+
+
 	public void endTurn(){
 		print(unitsAlly.Count+ " units in list");
 		if(!playerTurn)
@@ -373,6 +382,10 @@ public class Map : MonoBehaviour {
 		FocusedUnit = null;
 		print("It is " + playerTurn + " that it is the player's turn");
 	}
+		
+		
+		
+		
 		
 	public void GenerateMap(){
 
@@ -1012,5 +1025,738 @@ public class Map : MonoBehaviour {
 			tile.SetCoordinate (19, i);
 			tiles.Add(tile);
 		}
+	}
+	
+	
+	
+	
+	public void GenerateMap2(){
+		foreach (var tile in tiles) {
+			Destroy (tile.gameObject);
+		}
+		
+		
+		//0th column
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (0, i);
+			tiles.Add(tile);
+		}
+		for (var i = 2; i < 8; i++) {
+			//print ("Setting Coordinate : " + i + 5);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (0, i);
+			tiles.Add(tile);
+		}
+		for (var i=8; i<10; i++){
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (0, i);
+			tiles.Add(tile);
+		}
+		
+		//1st column
+		for(var i = 0; i < 1; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (1, i);
+			tiles.Add(tile);
+		}
+		for (var i = 1; i < 8; i++) {
+			//print ("Setting Coordinate : " + i + 5);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (1, i);
+			tiles.Add(tile);
+		}
+		for (var i=8; i<10; i++){
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (1, i);
+			tiles.Add(tile);
+		}
+		
+		//2nd column
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (2, i);
+			tiles.Add(tile);
+		}
+		for(var i = 2; i < 3; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(rockPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (2, i);
+			tiles.Add(tile);
+		}
+		for(var i = 3; i < 9; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (2, i);
+			tiles.Add(tile);
+		}
+		for(var i = 9; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (2, i);
+			tiles.Add(tile);
+		}
+		
+		//3rd column
+		for(var i = 0; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (3, i);
+			tiles.Add(tile);
+		}
+		
+		//4th column
+		for(var i = 0; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (4, i);
+			tiles.Add(tile);
+		}
+		
+		//5th column
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (5, i);
+			tiles.Add(tile);
+		}
+		for(var i = 2; i < 5; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (5, i);
+			tiles.Add(tile);
+		}
+		for(var i = 5; i < 8; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (5, i);
+			tiles.Add(tile);
+		}
+		for(var i = 8; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (5, i);
+			tiles.Add(tile);
+		}
+		
+		//column 6
+		for(var i = 0; i < 3; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (6, i);
+			tiles.Add(tile);
+		}
+		for(var i = 3; i < 8; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (6, i);
+			tiles.Add(tile);
+		}
+		for(var i = 8; i < 9; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (6, i);
+			tiles.Add(tile);
+		}
+		for(var i = 9; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (6, i);
+			tiles.Add(tile);
+		}
+		
+		//7th column
+		for(var i = 0; i < 1; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(rockPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (7, i);
+			tiles.Add(tile);
+		}
+		for(var i = 1; i < 3; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (7, i);
+			tiles.Add(tile);
+		}
+		for(var i = 3; i < 4; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (7, i);
+			tiles.Add(tile);
+		}
+		for(var i = 4; i < 6; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (7, i);
+			tiles.Add(tile);
+		}
+		for(var i = 6; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (7, i);
+			tiles.Add(tile);
+		}
+		
+		//8th row
+		for(var i = 0; i < 1; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (8, i);
+			tiles.Add(tile);
+		}
+		for(var i = 1; i < 4; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (8, i);
+			tiles.Add(tile);
+		}
+		for(var i = 4; i < 6; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (8, i);
+			tiles.Add(tile);
+		}
+		for(var i = 6; i < 7; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (8, i);
+			tiles.Add(tile);
+		}
+		for(var i = 7; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (8, i);
+			tiles.Add(tile);
+		}
+		
+		//9th row
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (9, i);
+			tiles.Add(tile);
+		}
+		for(var i = 2; i < 4; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (9, i);
+			tiles.Add(tile);
+		}
+		for(var i = 4; i < 6; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (9, i);
+			tiles.Add(tile);
+		}
+		for(var i = 6; i < 8; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (9, i);
+			tiles.Add(tile);
+		}
+		for(var i = 8; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (9, i);
+			tiles.Add(tile);
+		}
+		
+		//10th column
+		for(var i = 0; i < 4; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (10, i);
+			tiles.Add(tile);
+		}
+		for(var i = 4; i < 6; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (10, i);
+			tiles.Add(tile);
+		}
+		for(var i = 6; i < 8; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (10, i);
+			tiles.Add(tile);
+		}
+		for(var i = 8; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (10, i);
+			tiles.Add(tile);
+		}
+		
+		//11th row
+		for(var i = 0; i < 1; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (11, i);
+			tiles.Add(tile);
+		}
+		for(var i = 1; i < 6; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (11, i);
+			tiles.Add(tile);
+		}
+		for(var i = 6; i < 8; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (11, i);
+			tiles.Add(tile);
+		}
+		for(var i = 8; i < 9; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (11, i);
+			tiles.Add(tile);
+		}
+		for(var i = 9; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (11, i);
+			tiles.Add(tile);
+		}
+		
+		//12th column
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (12, i);
+			tiles.Add(tile);
+		}
+		for(var i = 2; i < 3; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (12, i);
+			tiles.Add(tile);
+		}
+		for(var i = 3; i < 4; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(rockPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (12, i);
+			tiles.Add(tile);
+		}
+		for(var i = 4; i < 6; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (12, i);
+			tiles.Add(tile);
+		}
+		for(var i = 6; i < 9; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (12, i);
+			tiles.Add(tile);
+		}
+		for(var i = 9; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (12, i);
+			tiles.Add(tile);
+		}
+		
+		//13th row
+		for(var i = 0; i < 1; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (13, i);
+			tiles.Add(tile);
+		}
+		for(var i = 1; i < 4; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (13, i);
+			tiles.Add(tile);
+		}
+		for(var i = 4; i < 5; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(rockPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (13, i);
+			tiles.Add(tile);
+		}
+		for(var i = 5; i < 9; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (13, i);
+			tiles.Add(tile);
+		}
+		for(var i = 9; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (13, i);
+			tiles.Add(tile);
+		}
+		
+		//14th row
+		for(var i = 0; i < 4; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (14, i);
+			tiles.Add(tile);
+		}
+		for(var i = 4; i < 7; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (14, i);
+			tiles.Add(tile);
+		}
+		for(var i = 7; i < 9; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (14, i);
+			tiles.Add(tile);
+		}
+		for(var i = 9; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (14, i);
+			tiles.Add(tile);
+		}
+		
+		//15th column
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (15, i);
+			tiles.Add(tile);
+		}
+		for(var i = 2; i < 3; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (15, i);
+			tiles.Add(tile);
+		}
+		for(var i = 3; i < 6; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (15, i);
+			tiles.Add(tile);
+		}
+		for(var i = 6; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (15, i);
+			tiles.Add(tile);
+		}
+		
+		//16th column
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (16, i);
+			tiles.Add(tile);
+		}
+		for(var i = 2; i < 5; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (16, i);
+			tiles.Add(tile);
+		}
+		for(var i = 5; i < 8; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (16, i);
+			tiles.Add(tile);
+		}
+		for(var i = 8; i < 9; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(rockPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (16, i);
+			tiles.Add(tile);
+		}
+		for(var i = 9; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (16, i);
+			tiles.Add(tile);
+		}
+		
+		//17th column
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (17, i);
+			tiles.Add(tile);
+		}
+		for(var i = 2; i < 4; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(waterPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (17, i);
+			tiles.Add(tile);
+		}
+		for(var i = 4; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (17, i);
+			tiles.Add(tile);
+		}
+		
+		//18th row
+		for(var i = 0; i < 2; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(bridgePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (18, i);
+			tiles.Add(tile);
+		}
+		for(var i = 2; i < 9; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (18, i);
+			tiles.Add(tile);
+		}
+		for(var i = 9; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (18, i);
+			tiles.Add(tile);
+		}
+		
+		//19th column
+		for(var i = 0; i < 7; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(groundPrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (19, i);
+			tiles.Add(tile);
+		}
+		for(var i = 7; i < 10; i++){
+			//print ("Setting Coordinate : " + i + k);
+			Tile tile;
+			tile = Instantiate(treePrefab);
+			tile.gameObject.SetActive(true);
+			tile.transform.SetParent(transform);
+			tile.SetCoordinate (19, i);
+			tiles.Add(tile);
+		}
+		
 	}
 }
