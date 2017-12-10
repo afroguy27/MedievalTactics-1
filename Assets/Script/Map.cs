@@ -46,6 +46,7 @@ public class Map : MonoBehaviour {
 	public Text atktxt;
 	public Text rangetxt;
 	public Text rationtxt;
+	public Text turntxt;
 
 
 	//lists of ally and enemy units
@@ -233,6 +234,13 @@ public class Map : MonoBehaviour {
 		atktxt.text = "Attack: " + atkStr;
 		rangetxt.text = "Attack Range: " + rangeStr;
 		rationtxt.text = "Rations: " + rationStr;
+		if (playerTurn == true) {
+			turntxt.text = "Blue";
+			turntxt.color = Color.blue;
+		} else {
+			turntxt.text = "Red";
+			turntxt.color = Color.red;
+		}
 		if (Input.GetKeyDown(KeyCode.Mouse1))
 			endTurn();
 
@@ -1582,10 +1590,7 @@ public class Map : MonoBehaviour {
 		for(var i = 7; i < 9; i++){
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
-			if (i == 7)
-				tile = Instantiate (housePrefab);
-			else
-				tile = Instantiate(groundPrefab);
+			tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
 			tile.SetCoordinate (14, i);
@@ -1632,7 +1637,10 @@ public class Map : MonoBehaviour {
 		for(var i = 6; i < 10; i++){
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
-			tile = Instantiate(groundPrefab);
+			if (i == 7)
+				tile = Instantiate (housePrefab);
+			else
+				tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
 			tile.SetCoordinate (15, i);
