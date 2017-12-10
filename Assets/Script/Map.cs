@@ -1029,7 +1029,7 @@ public class Map : MonoBehaviour {
 	
 	
 	
-	
+	//level 2
 	public void GenerateMap2(){
 		foreach (var tile in tiles) {
 			Destroy (tile.gameObject);
@@ -1145,7 +1145,10 @@ public class Map : MonoBehaviour {
 		for(var i = 0; i < 10; i++){
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
-			tile = Instantiate(groundPrefab);
+			if (i == 3)
+				tile = Instantiate (housePrefab);
+			else
+				tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
 			tile.SetCoordinate (4, i);
@@ -1458,16 +1461,16 @@ public class Map : MonoBehaviour {
 		for(var i = 0; i < 2; i++){
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
-			tile = Instantiate(treePrefab);
-			tile.gameObject.SetActive(true);
-			tile.transform.SetParent(transform);
+			tile = Instantiate (treePrefab);
+			tile.gameObject.SetActive (true);
+			tile.transform.SetParent (transform);
 			tile.SetCoordinate (12, i);
-			tiles.Add(tile);
+			tiles.Add (tile);
 		}
 		for(var i = 2; i < 3; i++){
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
-			tile = Instantiate(groundPrefab);
+			tile = Instantiate(housePrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
 			tile.SetCoordinate (12, i);
@@ -1579,7 +1582,10 @@ public class Map : MonoBehaviour {
 		for(var i = 7; i < 9; i++){
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
-			tile = Instantiate(groundPrefab);
+			if (i == 7)
+				tile = Instantiate (housePrefab);
+			else
+				tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
 			tile.SetCoordinate (14, i);
