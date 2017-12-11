@@ -2671,7 +2671,7 @@ MonoBehaviour:
   RockPrefab: {fileID: 0}
   TreePrefab: {fileID: 0}
   menu: {fileID: 1728472682}
-  level: 1
+  level: 2
 --- !u!4 &1343498444
 Transform:
   m_ObjectHideFlags: 0

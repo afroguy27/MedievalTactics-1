@@ -26,10 +26,13 @@ public class Manager : MonoBehaviour {
 
 	private Button button; //button instance
 	Unit unit;
+	public MainMenu menu;
+	public int level;
 
 	// Use this for initialization
 	IEnumerator Start () {
-		map.GenerateMap();
+		
+		
 		yield return null;
 
 		KingPrefab.gameObject.SetActive(false);
@@ -55,6 +58,13 @@ public class Manager : MonoBehaviour {
 			unit = map.unitsEnemy [i];
 			unit.isMoved = true;
 		}
+	}
+
+	void Awake () {
+		if (level == 1)
+			map.GenerateMap ();
+		else if (level == 2)
+			map.GenerateMap2 ();
 	}
 		
 }
