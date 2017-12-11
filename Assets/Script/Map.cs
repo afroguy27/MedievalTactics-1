@@ -48,6 +48,8 @@ public class Map : MonoBehaviour {
 	public Text rationtxt;
 	public Text turntxt;
 
+	//sounds
+	public AudioSource swordSound;
 
 	//lists of ally and enemy units
 	public List<Unit> unitsAlly = new List<Unit> (10);
@@ -105,6 +107,7 @@ public class Map : MonoBehaviour {
 			if (toUnit.health <= 0)
 				unitsAlly.Remove (toUnit);
 		}
+		swordSound.Play ();
 		toUnit.isDead();
 	}
 
