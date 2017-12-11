@@ -1773,4 +1773,30 @@ public class Map : MonoBehaviour {
 		}
 		
 	}
+
+	public void GenerateRandomMap (){
+
+		for (int i = 0; i < 20; i++) {
+			for (int k = 0; k < 10; k++) {
+				Tile t;
+				var rand = UnityEngine.Random.Range (0, 30);
+				if (rand == 0) {
+					t = Instantiate (rockPrefab);
+				} else if (rand == 1 || rand == 2) {
+					t = Instantiate (treePrefab);
+				} else if (rand == 3 || rand == 4) {
+					t = Instantiate (waterPrefab);
+				} else if (rand == 5) {
+					t = Instantiate (housePrefab);
+				} else {
+					t = Instantiate (groundPrefab);
+				}
+				t.gameObject.SetActive (true);
+				t.transform.SetParent (transform);
+				t.SetCoordinate (i, k);
+				tiles.Add (t);
+			}
+		}
+
+	}
 }
