@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-	public GameObject button, R_level, level_1, level_2;
+	public GameObject button, R_level, level_1, level_2, howto;
 
 	public void Story () {
 		gameObject.SetActive(false);
+		howto.SetActive(false);
 		R_level.SetActive (false);
 		level_1.SetActive (true);
 		level_2.SetActive (true);
