@@ -25,6 +25,10 @@ public class MainMenu : MonoBehaviour {
 		SceneManager.LoadScene (4);
 	}
 
+	public void Level_R() {
+		SceneManager.LoadScene (5);
+	}
+
 	public void ReturnToMainMenu() {
 		SceneManager.LoadScene (1); //Loads the Scene0 scene
 	}

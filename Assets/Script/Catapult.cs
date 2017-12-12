@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Swordman : Unit {
-
+public class Catapult : Unit {
 
 	public override void isDead(){
 		if(health <= 0 ){
@@ -19,5 +18,4 @@ public class Swordman : Unit {
 	public override void loseHealth(int ATK){
 		health -= ATK;
 	}
-		
 }

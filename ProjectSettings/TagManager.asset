@@ -11,6 +11,10 @@ TagManager:
   - House
   - BlueKing
   - RedKing
+  - BlueCatapult
+  - RedCatapult
+  - BlueScout
+  - RedScout
   layers:
   - Default
   - TransparentFX

@@ -263,7 +263,7 @@ public class Map : MonoBehaviour {
 		//moves through the units
 		for (int i = 0; i < unitsAlly.Count; i++) {
 			//if the unit has 2 or less rations and has not betrayed yet
-			if (unitsAlly [i].rations <= 2 && !unitsAlly[i].hasBetrayed) {
+			if (unitsAlly [i].rations <= 2 && !unitsAlly[i].hasBetrayed && GetTile(unitsAlly[i].x, unitsAlly[i].y).team.Equals("Blue")) {
 				//gets the Image component of the unit
 				unitsAlly[i].sprite = unitsAlly [i].GetComponent<Image> ();
 				//if the unit is a blue archer, makes it a red archer

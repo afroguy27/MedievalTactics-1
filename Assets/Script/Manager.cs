@@ -20,6 +20,14 @@ public class Manager : MonoBehaviour {
 	[SerializeField]
 	Unit EnemyArcherPrefab;
 	[SerializeField]
+	Unit CatapultPrefab;
+	[SerializeField]
+	Unit CatapultRedPrefab;
+	[SerializeField]
+	Unit ScoutPrefab;
+	[SerializeField]
+	Unit ScoutRedPrefab;
+	[SerializeField]
 	Obstacles RockPrefab;
 	[SerializeField]
 	Obstacles TreePrefab;
@@ -46,12 +54,16 @@ public class Manager : MonoBehaviour {
 		map.PutUnit (0, 5, KingPrefab, false);
 		map.PutUnit (0, 6, ArcherPrefab, false);
 		map.PutUnit (1, 5, SwordmanPrefab, false);
-		map.PutUnit (1,6, SwordmanPrefab, false);
+		map.PutUnit (1, 6, SwordmanPrefab, false);
+		map.PutUnit (0, 7, CatapultPrefab, false);
+		map.PutUnit (1, 7, ScoutPrefab, false);
 
 		map.PutUnit (19, 5, EnemyKingPrefab, true);
 		map.PutUnit (19, 6, EnemyArcherPrefab, true);
 		map.PutUnit (18, 5, EnemySwordmanPrefab, true);
 		map.PutUnit (18, 6, EnemySwordmanPrefab, true);
+		map.PutUnit (19, 4, CatapultRedPrefab, true);
+		map.PutUnit (18, 4, ScoutRedPrefab, true);
 
 		//Sets the enemy sides isMoved to true so you can't use them
 		for (int i = 0; i < map.unitsEnemy.Count; i++) {
