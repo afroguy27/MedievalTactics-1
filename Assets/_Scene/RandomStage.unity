@@ -2522,6 +2522,7 @@ MonoBehaviour:
   movesCount: 0
   vision: 0
   rations: 10
+  MAX_RATIONS: 0
   blueTeam: {fileID: 21300002, guid: b185519ef171e634cbf699ea13d4a2c7, type: 3}
   redTeam: {fileID: 21300002, guid: b3cecbbf06b06f7459e33a79ef02858e, type: 3}
   isEnemy: 0
@@ -2819,7 +2820,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c1d5a27f7fd42cc4493ad29e5d398bb4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b3899f46819f391418f42aa30174726b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
