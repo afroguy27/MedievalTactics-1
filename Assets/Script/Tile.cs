@@ -18,6 +18,11 @@ public class Tile : MonoBehaviour {
 	[SerializeField]
 	public Color movableColor;
 
+	public bool capturing = false;
+	public string team = "";
+	public Color captureRed;
+	public Color captureBlue;
+
 	int x;
 	int y;
 

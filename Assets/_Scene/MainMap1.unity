@@ -343,6 +343,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300002, guid: b3cecbbf06b06f7459e33a79ef02858e,
         type: 3}
+    - target: {fileID: 114897333126938248, guid: d30f4e0a4c6a10d4d8842351a8f75f54,
+        type: 2}
+      propertyPath: MAX_RATIONS
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d30f4e0a4c6a10d4d8842351a8f75f54, type: 2}
   m_IsPrefabParent: 0
@@ -2495,6 +2500,15 @@ Prefab:
       propertyPath: rations
       value: 99
       objectReference: {fileID: 0}
+    - target: {fileID: 1658512496132768, guid: 3edf0f17193cae44aba348bf70c71f4b, type: 2}
+      propertyPath: m_TagString
+      value: BlueKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 114700233817402778, guid: 3edf0f17193cae44aba348bf70c71f4b,
+        type: 2}
+      propertyPath: MAX_RATIONS
+      value: 99
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61985420651637132, guid: 3edf0f17193cae44aba348bf70c71f4b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3edf0f17193cae44aba348bf70c71f4b, type: 2}
@@ -2522,6 +2536,7 @@ MonoBehaviour:
   movesCount: 0
   vision: 0
   rations: 10
+  MAX_RATIONS: 10
   blueTeam: {fileID: 21300002, guid: b185519ef171e634cbf699ea13d4a2c7, type: 3}
   redTeam: {fileID: 21300002, guid: b3cecbbf06b06f7459e33a79ef02858e, type: 3}
   isEnemy: 0
@@ -2738,6 +2753,15 @@ Prefab:
     - target: {fileID: 114436367799982464, guid: f847755bda0dd9542826c79c5627c80a,
         type: 2}
       propertyPath: rations
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013959583985558, guid: f847755bda0dd9542826c79c5627c80a, type: 2}
+      propertyPath: m_TagString
+      value: RedKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 114436367799982464, guid: f847755bda0dd9542826c79c5627c80a,
+        type: 2}
+      propertyPath: MAX_RATIONS
       value: 99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3046,6 +3070,61 @@ Prefab:
     - target: {fileID: 1003642758894564, guid: d5c787814c7241e418e6044b1e2db8a5, type: 2}
       propertyPath: m_TagString
       value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 114940135261208116, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114940135261208116, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114940135261208116, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827344414527302, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: captureBlue.r
+      value: 0.2352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827344414527302, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: captureBlue.g
+      value: 0.24264707
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827344414527302, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: captureBlue.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827344414527302, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: captureBlue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827344414527302, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: captureRed.r
+      value: 0.85294116
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827344414527302, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: captureRed.g
+      value: 0.07525959
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827344414527302, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: captureRed.b
+      value: 0.07525959
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827344414527302, guid: d5c787814c7241e418e6044b1e2db8a5,
+        type: 2}
+      propertyPath: captureRed.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5c787814c7241e418e6044b1e2db8a5, type: 2}
@@ -4590,6 +4669,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300002, guid: 87510f23e8e17af4fad5e2913b88cdd0,
         type: 3}
+    - target: {fileID: 114430368340180258, guid: f04bee4a7bc72614f9953403fc77af23,
+        type: 2}
+      propertyPath: MAX_RATIONS
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f04bee4a7bc72614f9953403fc77af23, type: 2}
   m_IsPrefabParent: 0
@@ -4736,6 +4820,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300002, guid: 87510f23e8e17af4fad5e2913b88cdd0,
         type: 3}
+    - target: {fileID: 114156884741337326, guid: d88b11d615845b248a69a0aad789ead7,
+        type: 2}
+      propertyPath: MAX_RATIONS
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d88b11d615845b248a69a0aad789ead7, type: 2}
   m_IsPrefabParent: 0

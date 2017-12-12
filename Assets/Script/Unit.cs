@@ -13,6 +13,7 @@ public class Unit : MonoBehaviour {
 	public int movesCount=0;
 	public int vision;
 	public int rations;
+	public int MAX_RATIONS;
 	public Sprite blueTeam;
 	public Sprite redTeam;
 
@@ -92,33 +93,6 @@ public class Unit : MonoBehaviour {
 		var image = GetComponent<Image> ();
 		image.color = new Color (1.0f, 1.0f, 1.0f);
 	}
-		
-	/*public void betray(){
-		for (int i = 0; i < map.unitsAlly.Count; i++) {
-			if (map.unitsAlly [i].rations <= 2) {
-				sprite = map.unitsAlly [i].GetComponent<Image> ();
-
-				if(map.unitsAlly[i].CompareTag("BlueArcher")) {
-					map.unitsAlly [i].sprite.sprite = redTeam;
-				}
-				else if(map.unitsAlly[i].CompareTag("RedArcher")) {
-					map.unitsAlly [i].sprite.sprite = blueTeam;
-				}
-				else if(map.unitsAlly[i].CompareTag("BlueSwordsman")) {
-					map.unitsAlly [i].sprite.sprite = redTeam;
-				}
-				else if(map.unitsAlly[i].CompareTag("RedSwordsman")) {
-					map.unitsAlly [i].sprite.sprite = blueTeam;
-				}
-
-				map.unitsAlly [i].isEnemy = true;
-				map.unitsAlly [i].hasBetrayed = true;
-				map.unitsEnemy.Add (map.unitsAlly [i]);
-				map.unitsAlly.RemoveAt(i);
-
-			}
-		}
-	}*/
 
 	// Use this for initialization
 	public void hovered(){

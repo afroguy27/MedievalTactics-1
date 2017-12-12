@@ -33,6 +33,7 @@ public class Map : MonoBehaviour {
 	List<Tile> tiles = new List<Tile>();
 	List<Tile> highlightedMoveTiles = new List<Tile>();
 	List<Tile> highlightedAttackTiles = new List<Tile>();
+	List<Tile> houses = new List<Tile> ();
 
 	public Button button; //button instance
 	public bool playerTurn = true; //boolean value used for determining player turn
@@ -211,6 +212,8 @@ public class Map : MonoBehaviour {
 			print ("debug " + Focus.x + " " + Focus.y);
 			FocusedUnit.x = target.X;
 			FocusedUnit.y = target.Y;
+			if ((FocusedUnit.CompareTag ("BlueKing") || FocusedUnit.CompareTag ("RedKing")) && target.CompareTag ("House"))
+				target.capturing = true;
 			highlightAttackable (FocusedUnit.range, FocusedUnit.x, FocusedUnit.y);
 			if (highlightedAttackTiles.Count == 0) {
 				print ("Cannot attack hence deselect");
@@ -358,22 +361,46 @@ public class Map : MonoBehaviour {
 
 	public void endTurn(){
 		print(unitsAlly.Count+ " units in list");
-		if(!playerTurn)
+		if (!playerTurn) {
 			betrayRed (); //checks betray for red side
+			for (int i = 0; i < houses.Count; i++) {
+				Unit unit = GetUnit (houses [i].X, houses [i].Y);
+				if (houses [i].capturing && unit.CompareTag ("BlueKing")) {
+					houses [i].capturing = false;
+					houses [i].team = "Blue";
+					houses[i].GetComponent<Image>().color = houses[i].captureBlue;
+				}
+				if (houses [i].team.Equals("Blue") && unit != null && !unit.isEnemy)
+					unit.rations = unit.MAX_RATIONS;
+			}
+		}
 
 		//switches the allies isMoved
 		for (int i = 0; i < unitsAlly.Count; i++) {
 			unitsAlly [i].recolor ();
 			if(unitsAlly[i].isMoved == !playerTurn)
 				unitsAlly[i].isMoved = !unitsAlly[i].isMoved;
+			/*if (GetTile (unitsAlly [i].x, unitsAlly [i].y).CompareTag ("House") && )
+				unitsAlly [i].rations = unitsAlly [i].MAX_RATIONS;*/
 		}
 		for (int i = 0; i < unitsAlly.Count; i++) {
 			if(unitsAlly[i].hasAttacked == !playerTurn)
 				unitsAlly[i].hasAttacked = !unitsAlly[i].hasAttacked;
 		}
 
-		if (playerTurn)
+		if (playerTurn) {
 			betrayBlue (); //any ally units that have less than 2 rations will betray
+			for (int i = 0; i < houses.Count; i++) {
+				Unit unit = GetUnit (houses [i].X, houses [i].Y);
+				if (houses [i].capturing && unit.CompareTag ("RedKing")) {
+					houses [i].capturing = false;
+					houses [i].team = "Red";
+					houses[i].GetComponent<Image>().color = houses[i].captureRed;
+				}
+				if (houses [i].team.Equals("Red") && unit != null && unit.isEnemy)
+					unit.rations = unit.MAX_RATIONS;
+			}
+		}
 		
 		//switches the enemies button
 		for (int i = 0; i < unitsEnemy.Count; i++) {
@@ -394,10 +421,7 @@ public class Map : MonoBehaviour {
 		print("It is " + playerTurn + " that it is the player's turn");
 	}
 		
-		
-		
-		
-		
+
 	public void GenerateMap(){
 
 		foreach (var tile in tiles) {
@@ -568,6 +592,7 @@ public class Map : MonoBehaviour {
 			if (i == 1) {
 				Tile tile;
 				tile = Instantiate (housePrefab);
+				houses.Add (tile);
 				tile.gameObject.SetActive (true);
 				tile.transform.SetParent (transform);
 				tile.SetCoordinate (6, i);
@@ -867,6 +892,7 @@ public class Map : MonoBehaviour {
 			if (i == 3) {
 				Tile tile;
 				tile = Instantiate (housePrefab);
+				houses.Add (tile);
 				tile.gameObject.SetActive (true);
 				tile.transform.SetParent (transform);
 				tile.SetCoordinate (13, i);
@@ -1156,9 +1182,10 @@ public class Map : MonoBehaviour {
 		for(var i = 0; i < 10; i++){
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
-			if (i == 3)
+			if (i == 3) {
 				tile = Instantiate (housePrefab);
-			else
+				houses.Add (tile);
+			} else
 				tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
@@ -1482,6 +1509,7 @@ public class Map : MonoBehaviour {
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
 			tile = Instantiate(housePrefab);
+			houses.Add (tile);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
 			tile.SetCoordinate (12, i);
@@ -1637,12 +1665,13 @@ public class Map : MonoBehaviour {
 			tile.SetCoordinate (15, i);
 			tiles.Add(tile);
 		}
-		for(var i = 6; i < 10; i++){
+		for (var i = 6; i < 10; i++) {
 			//print ("Setting Coordinate : " + i + k);
 			Tile tile;
-			if (i == 7)
+			if (i == 7) {
 				tile = Instantiate (housePrefab);
-			else
+				houses.Add (tile);
+			} else
 				tile = Instantiate(groundPrefab);
 			tile.gameObject.SetActive(true);
 			tile.transform.SetParent(transform);
