@@ -49,6 +49,8 @@ public class Map : MonoBehaviour {
 	public Text rationtxt;
 	public Text turntxt;
 
+	//sounds
+	public AudioSource swordSound;
 
 	//lists of ally and enemy units
 	public List<Unit> unitsAlly = new List<Unit> (10);
@@ -106,6 +108,7 @@ public class Map : MonoBehaviour {
 			if (toUnit.health <= 0)
 				unitsAlly.Remove (toUnit);
 		}
+		swordSound.Play ();
 		toUnit.isDead();
 	}
 
@@ -1801,5 +1804,50 @@ public class Map : MonoBehaviour {
 			tiles.Add(tile);
 		}
 		
+	}
+
+	public void GenerateRandomMap (){
+
+		for (int i = 0; i < 20; i++) {
+			for (int k = 0; k < 10; k++) {
+				Tile t;
+				if (i == 0 && k == 5) {
+					t = Instantiate (groundPrefab);
+				} else if (i == 0 && k == 6) {
+					t = Instantiate (groundPrefab); 
+				} else if (i == 1 && k == 5) {
+					t = Instantiate (groundPrefab);
+				} else if (i == 1 && k == 6) {
+					t = Instantiate (groundPrefab);
+				} else if (i == 19 && k == 5) {
+					t = Instantiate (groundPrefab);
+				} else if (i == 19 && k == 6) {
+					t = Instantiate (groundPrefab);
+				} else if (i == 18 && k == 5) {
+					t = Instantiate (groundPrefab);
+				} else if (i == 18 && k == 6) {
+					t = Instantiate (groundPrefab);
+				} else {
+					
+					var rand = UnityEngine.Random.Range (0, 30);
+					if (rand == 0) {
+						t = Instantiate (rockPrefab);
+					} else if (rand == 1 || rand == 2) {
+						t = Instantiate (treePrefab);
+					} else if (rand == 3 || rand == 4) {
+						t = Instantiate (waterPrefab);
+					} else if (rand == 5) {
+						t = Instantiate (housePrefab);
+					} else {
+						t = Instantiate (groundPrefab);
+					}
+				}
+				t.gameObject.SetActive (true);
+				t.transform.SetParent (transform);
+				t.SetCoordinate (i, k);
+				tiles.Add (t);
+			}
+		}
+
 	}
 }
