@@ -9,6 +9,8 @@ TagManager:
   - RedArcher
   - RedSwordsman
   - House
+  - BlueKing
+  - RedKing
   layers:
   - Default
   - TransparentFX
